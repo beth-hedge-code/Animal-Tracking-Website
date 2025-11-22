@@ -1,0 +1,19 @@
+https://placebear.com/
+
+General
+    Bootstrap Theme
+    icon addition
+
+index page
+    intro cleanup
+    login card
+    signup card
+    database integration
+    verification of user and pass
+
+animal home page
+    add functionality to the new animal and filter buttons. former should allow the creation of a new animal while the latter filters based on the criterion (aka details) burchfiled requested of us.
+
+keep up with any time they visit the vet for each animal, as well as if the appointment type is emergency or routine, and any vaccines given, and notes about the vet visit
+keep up with what they feed the animals (time, date, type of food, and how much)
+

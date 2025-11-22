@@ -1,0 +1,109 @@
+//***STUFF***
+const regEmail = /[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?/
+const regPhone = /^([+]?\d{1,2}[-\s]?|)\d{3}[-\s]?\d{3}[-\s]?\d{4}$/
+
+//***INDEX***
+
+//Functions
+function validateEmail(strEmail){
+    if(!regEmail.test(strEmail)){
+        return true
+    }
+    else{
+        return false
+    }
+}
+function validateName(strName){
+    if(strName < 1){
+        return true
+    }
+    else{
+        return false
+    }
+}
+
+// Buttons to switch cards (NO USER INPUT) on Index
+document.querySelector('#btnLoginSignup').addEventListener('click',function(){
+    document.querySelector('#LoginCard').classList.remove('d-none')
+    document.querySelector('#WelcomeCard').classList.add('d-none')
+})
+document.querySelector('#btnSignUpRef').addEventListener('click',function(){
+    document.querySelector('#SignUpCard').classList.remove('d-none')
+    document.querySelector('#LoginCard').classList.add('d-none')
+})
+document.querySelector('#btnLoginRef').addEventListener('click',function(){
+    document.querySelector('#LoginCard').classList.remove('d-none')
+    document.querySelector('#SignUpCard').classList.add('d-none')
+})
+
+
+// Buttons for user inputs
+document.querySelector('#btnLogin').addEventListener('click',function(){
+    let strEmail = document.querySelector('#txtEmail').value.trim()
+    let blnError = false
+    let strError = ''
+    
+    if(validateEmail(strEmail) == true){
+        blnError = true
+        strError += "Invalid Email. "
+    }
+
+    if(blnError == true){
+        Swal.fire({
+            title:'Oh no! Please check your work',
+            html:strError,
+            icon:'error',
+            confirmButtonColor: '#582c83' 
+        })
+    }
+    else{
+        //Sends User to Animal Home Page
+        //Got from W3Schools 
+        //No user specfic verfication. 
+        window.location.replace("animalhome.html");
+    }
+})
+
+document.querySelector('#btnSignUp').addEventListener('click',function(){
+    let strEmail = document.querySelector('#txtEmail').value.trim()
+    let strName = document.querySelector('#txtName').value.trim()
+    let blnError = false
+    let strError = ''
+    
+    if(validateEmail(strEmail) == true){
+        blnError = true
+        strError += "Invalid Email. "
+    }
+    if(validateName(strName) == true){
+        blnError = true
+        strError += "Invalid Name. "
+    }
+
+    if(blnError == true){
+        Swal.fire({
+            title:'Oh no! Please check your work',
+            html:strError,
+            icon:'error',
+            confirmButtonColor: '#582c83' 
+        })
+    }
+    else{
+        //Would Like to have a Welcome Pop up Happen Some How! 
+        window.location.replace("animalhome.html");
+    }
+})
+
+
+
+
+//***ANIMAL HOME***
+
+//button to add a new animal
+document.querySelector('#btnNewAnimal').addEventListener('click',function(){
+    //open a new card labeled "newAnimal" here?
+})
+
+//buttont o filter animals by category
+document.querySelector('#btnFilter').addEventListener('click',function(){
+    //select from a list 
+})

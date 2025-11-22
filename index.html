@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Canyon Crest Animal Tracker</title>
+    <link rel="icon" type="image/x-icon" href="imgs/cow.png">
+    <link rel="stylesheet" href="stylesheetindex.css">
+    <!-- BootStrap CDN -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+    <!-- SweetAlert2 CDN -->
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+</head>
+<body class="bg">
+    
+    
+    <!-- WELCOME CARD BEGINS-->
+        <div class="card position-absolute top-50 start-50 translate-middle " id="WelcomeCard">
+            <div class="card-body bg-warning">
+                <h1 style="font-size: 4vw;" class="text-center">Welcome To Canyon Crest Animal Tracker</h1>
+                <button id="btnLoginSignup" type="button" class="btn btn-light">Login/Sign Up</button>
+            </div>
+        </div>
+    
+    <!--LOGIN CARD BEGINS-->
+        <div class="card col-6 position-absolute top-50 start-50 translate-middle d-none"  id="LoginCard">
+            <div class="card body bg-warning">
+                <h2 class="text-center">Login</h2>
+                <form id="loginForm">
+                    <label class="form-label" for="txtEmail">Email</label>
+                    <input class="form-control" id="txtEmail" type="email">
+                    <label class="form-label" for="txtPassword">Password</label>
+                    <input class="form-control" id="txtPassword" type="password">
+                    <br>
+                    <button id="btnLogin" type="button" class="btn btn-light">Login</button>
+                </form>
+                <button id="btnSignUpRef" type="button" class="btn btn-link">New? Register Here!</button>
+            </div>
+        </div>
+    
+    <!--SIGNUP CARD BEGINS-->
+        <div class="card col-6 position-absolute top-50 start-50 translate-middle d-none"  id="SignUpCard">
+            <div class="card body bg-warning">
+                <h2 class="text-center">Sign Up</h2>
+                <form id="loginForm">
+                    <label class="form-label" for="txtEmail">Email</label>
+                    <input class="form-control" id="txtEmail" type="email">
+                    <label class="form-label" for="txtPassword">Password</label>
+                    <input class="form-control" id="txtPassword" type="password">
+                    <br>
+                    <button id="btnSignUp" type="button" class="btn btn-light">SignUp</button>
+                </form>
+                <button id="btnLoginRef" type="button" class="btn btn-link">Go back to Login!</button>
+            </div>
+        </div>
+
+    
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous"></script>
+    <script src="javascript/app.js"></script>
+</body>
+</html>

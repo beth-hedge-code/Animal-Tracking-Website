@@ -17,8 +17,10 @@
     <!-- WELCOME CARD BEGINS-->
         <div class="card position-absolute top-50 start-50 translate-middle " id="WelcomeCard">
             <div class="card-body bg-warning">
-                <h1 style="font-size: 4vw;" class="text-center">Welcome To Canyon Crest Animal Tracker</h1>
-                <button id="btnLoginSignup" type="button" class="btn btn-light">Login/Sign Up</button>
+                <h1 style="font-size: 4vw;"  class="text-center">Welcome To Canyon Crest Animal Tracker</h1>
+                <div class=" d-flex justify-content-center">
+                    <button id="btnLoginSignup" type="button" class="btn btn-light">Login/Sign Up</button>
+                </div>
             </div>
         </div>
     
@@ -29,6 +31,8 @@
                 <form id="loginForm">
                     <label class="form-label" for="txtEmail">Email</label>
                     <input class="form-control" id="txtEmail" type="email">
+
+                    <!--PASSWORD CORRECTION NEEDED-->
                     <label class="form-label" for="txtPassword">Password</label>
                     <input class="form-control" id="txtPassword" type="password">
                     <br>
@@ -39,14 +43,33 @@
         </div>
     
     <!--SIGNUP CARD BEGINS-->
+    <!--GATHER MORE INFORMATION ON USER-->
+    <!--CHECKS NEEDED-->
         <div class="card col-6 position-absolute top-50 start-50 translate-middle d-none"  id="SignUpCard">
             <div class="card body bg-warning">
                 <h2 class="text-center">Sign Up</h2>
                 <form id="loginForm">
+                    <!--LOGIN CREDENTIALS-->
                     <label class="form-label" for="txtEmail">Email</label>
                     <input class="form-control" id="txtEmail" type="email">
                     <label class="form-label" for="txtPassword">Password</label>
+                    <!--NAME AND PHONE-->
                     <input class="form-control" id="txtPassword" type="password">
+                    <label class="form-label" for="txtFirstName">First Name</label>
+                    <input class="form-control" id="txtFirstName" type="text">
+                    <label class="form-label" for="txtLastName">Last Name</label>
+                    <input class="form-control" id="txtLastName" type="text">
+                    <label class="form-label" for="txtTelephone">Phone Number</label>
+                    <input class="form-control" id="txtTelephone" type="tel">
+                    <!-- PHYSICAL ADDRESS-->
+                    <label class="form-label" for="txtAddress">Address</label>
+                    <input class="form-control" id="txtAddress" type="text">
+                    <label class="form-label" for="txtCity">City</label>
+                    <input class="form-control" id="txtCity" type="text">
+                    <label class="form-label" for="txtState">State</label>
+                    <input class="form-control" id="txtState" type="text">
+                    <label class="form-label" for="txtZip">Zip</label>
+                    <input class="form-control" id="txtZip" type="text">
                     <br>
                     <button id="btnSignUp" type="button" class="btn btn-light">SignUp</button>
                 </form>

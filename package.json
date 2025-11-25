@@ -1,0 +1,24 @@
+{
+  "name": "animal-tracking-website",
+  "version": "1.0.0",
+  "description": "Node application for animal tracking!",
+  "homepage": "https://github.com/beth-hedge-code/Animal-Tracking-Website#readme",
+  "bugs": {
+    "url": "https://github.com/beth-hedge-code/Animal-Tracking-Website/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/beth-hedge-code/Animal-Tracking-Website.git"
+  },
+  "license": "ISC",
+  "author": "Beth Hedge, Miguel Glass",
+  "type": "commonjs",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "dependencies": {
+    "express": "^5.1.0"
+  },
+  "devDependencies": {}
+}

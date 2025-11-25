@@ -1,15 +1,20 @@
 //***STUFF***
 const regEmail = /[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?/
 const regPhone = /^([+]?\d{1,2}[-\s]?|)\d{3}[-\s]?\d{3}[-\s]?\d{4}$/
+const regPassword = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[a-zA-Z]).{8,}$/
 
 //***INDEX***
 
 //Functions
 function validateEmail(strEmail){
     if(!regEmail.test(strEmail)){
-        return true
+        document.querySelector('#passwordHelpBlock').classList.remove('text-success')
+        document.querySelector('#passwordHelpBlock').classList.add('text-danger')
+        return true   
     }
     else{
+        document.querySelector('#passwordHelpBlock').classList.remove('text-danger')
+        document.querySelector('#passwordHelpBlock').classList.add('text-success')
         return false
     }
 }
@@ -20,6 +25,17 @@ function validateName(strName){
     else{
         return false
     }
+}
+function validatePassword(strPassword){
+    if(!regPassword.test(strPassword)){
+        document.querySelector('#passwordHelpBlock').classList.remove('text-success')
+        document.querySelector('#passwordHelpBlock').classList.add('text-danger')
+        return false
+    } else {
+        document.querySelector('#passwordHelpBlock').classList.remove('text-danger')
+        document.querySelector('#passwordHelpBlock').classList.add('text-success')
+    }
+    return true
 }
 
 // Buttons to switch cards (NO USER INPUT) on Index
@@ -46,6 +62,11 @@ document.querySelector('#btnLogin').addEventListener('click',function(){
     if(validateEmail(strEmail) == true){
         blnError = true
         strError += "Invalid Email. "
+    }
+
+    if(validatePassword(strPassword) == true){
+        blnError = true
+        strError += "Invalid Password. "
     }
 
     if(blnError == true){

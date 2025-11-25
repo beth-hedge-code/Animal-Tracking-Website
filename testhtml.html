@@ -6,8 +6,27 @@
     <title>Document</title>
 </head>
 <body>
-    <p id="demo"></p>
+    <h1>Tree Info</h1>
+    <div id="tree-info"></div> <!-- container for your data -->
 
-    <script src="index.js"></script>
+    <script>
+        async function loadTree() {
+            const res = await fetch("http://localhost:3000/tbltrees/1");
+            const data = await res.json();
+
+            // Select container
+            const container = document.getElementById("tree-info");
+
+            // Populate container
+            container.innerHTML = `
+                <p><strong>Tree ID:</strong> ${data.TreeID}</p>
+                <p><strong>Name:</strong> ${data.Name}</p>
+                <p><strong>Species:</strong> ${data.Species}</p>
+            `;
+        }
+
+        loadTree();
+    </script>
+
 </body>
 </html>

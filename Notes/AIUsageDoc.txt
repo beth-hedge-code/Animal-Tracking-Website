@@ -1,0 +1,56 @@
+File to store AI usage and prompts.
+
+#1 
+Fixed index image to take up full screen using css style sheet
+    orginal code - (code was found on W3Schools doing research)
+        body,html{
+        height: 100%
+        }
+
+        .bg {
+        background-image: url(imgs/PhotoFunia-1763751617.jpg);
+        height: 100%;
+        background-position: center;
+        background-repeat: no-repeat;
+        background-size: cover;
+        }
+
+    prompt - im trying to make an image a take up a full background page. it needs to be reactive and not mess with the image that much this is my css body,html{ height: 100% } .bg { background-image: url(imgs/PhotoFunia-1763751617.jpg); height: 100%; background-position: center; background-repeat: no-repeat; background-size: cover; }
+    AI Recommedations used - <body class="bg"> 
+
+#2 When adding the bootstrap theme it overrided the orginal css I made. I uses AI to figure out how to get it back. 
+    orginal code same as above
+    > chatGPT helped solve -> deleting the orginal bootstrap cdn
+                            > Putting my stylesheet under the new theme stylesheet
+                            > Adding !important after background-image: url(imgs/PhotoFunia-1763751617.jpg);
+                            >changing img location after moved to file 
+                                >new location = "../imgs/PhotoFunia-1763751617.jpg"
+    
+    New Code : 
+        *stylesheetindex
+        body,html{
+            height: 100%;
+            }
+
+            .bg {
+            background-image: url("../imgs/PhotoFunia-1763751617.jpg") !important;
+            height: 100%;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: cover;
+            }
+        *index.html
+            <link rel="stylesheet" href="CSS/Bootstrap.css">
+            <link rel="stylesheet" href="CSS/stylesheetindex.css">
+
+        prompt -> hi im trying to use a bootstrap.css theme file and my own css file for a web page this is what my
+         css file looks like. how do i keep that photo background with the bootstrap theme 
+         body,html{ height: 100% } 
+         .bg { background-image: url(imgs/PhotoFunia-1763751617.jpg); 
+         height: 100%; background-position: center; background-repeat: no-repeat; background-size: cover; }
+
+         Followed by prompting it why it wasnt working leading to the img solution from the folder move.
+
+
+            
+

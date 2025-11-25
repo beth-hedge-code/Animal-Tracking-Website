@@ -6,17 +6,30 @@ const regPassword = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[a-zA-Z]).{8,}$/
 //***INDEX***
 
 //Functions
-function validateEmail(strEmail){
-    if(!regEmail.test(strEmail)){
-        document.querySelector('#passwordHelpBlock').classList.remove('text-success')
-        document.querySelector('#passwordHelpBlock').classList.add('text-danger')
-        return true   
+function validateEmail(strSignUpEmail){
+    if(!regEmail.test(strSignUpEmail)){
+        document.querySelector('#emailHelpBlock').classList.remove('text-success')
+        document.querySelector('#emailHelpBlock').classList.add('text-danger')
+        return false   
     }
     else{
-        document.querySelector('#passwordHelpBlock').classList.remove('text-danger')
-        document.querySelector('#passwordHelpBlock').classList.add('text-success')
-        return false
+        document.querySelector('#emailHelpBlock').classList.remove('text-danger')
+        document.querySelector('#emailHelpBlock').classList.add('text-success')
     }
+    return true
+}
+function validateEmail(strLoginEmail){
+    if(!regEmail.test(strLoginEmail)){
+        document.querySelector('#emailHelpBlock').classList.remove('text-success')
+        document.querySelector('#emailHelpBlock').classList.add('text-danger')
+        return false   
+    }
+    else{
+        document.querySelector('#emailHelpBlock').classList.remove('text-danger')
+        document.querySelector('#emailHelpBlock').classList.add('text-success')
+    }
+    return true
+
 }
 function validateName(strName){
     if(strName < 1){
@@ -34,13 +47,23 @@ function validateName(strName){
     } else {
         document.querySelector('#phoneHelpBlock').classList.remove('text-danger')
         document.querySelector('#phoneHelpBlock').classList.add('text-success')
-        return true
     }
-    
+    return true    
 }
 
-function validatePassword(strPassword){
-    if(!regPassword.test(strPassword)){
+function validatePassword(strLoginPassword){
+    if(!regPassword.test(strLoginPassword)){
+        document.querySelector('#passwordHelpBlock').classList.remove('text-success')
+        document.querySelector('#passwordHelpBlock').classList.add('text-danger')
+        return false
+    } else {
+        document.querySelector('#passwordHelpBlock').classList.remove('text-danger')
+        document.querySelector('#passwordHelpBlock').classList.add('text-success')
+    }
+    return true
+}
+function validatePassword(strSignUpPassword){
+    if(!regPassword.test(strSignUpPassword)){
         document.querySelector('#passwordHelpBlock').classList.remove('text-success')
         document.querySelector('#passwordHelpBlock').classList.add('text-danger')
         return false
@@ -68,16 +91,17 @@ document.querySelector('#btnLoginRef').addEventListener('click',function(){
 
 // Buttons for user inputs
 document.querySelector('#btnLogin').addEventListener('click',function(){
-    let strEmail = document.querySelector('#txtEmail').value.trim()
+    let strLoginEmail = document.querySelector('#txtLoginEmail').value.trim()
+    let strLoginPassword = document.querySelector('#txtLoginPassword').value.trim()
     let blnError = false
     let strError = ''
     
-    if(validateEmail(strEmail) == true){
+    if(validateEmail(strLoginEmail) == true){
         blnError = true
         strError += "Invalid Email. "
     }
 
-    if(validatePassword(strPassword) == true){
+    if(validatePassword(strLoginPassword) == true){
         blnError = true
         strError += "Invalid Password. "
     }
@@ -100,16 +124,17 @@ document.querySelector('#btnLogin').addEventListener('click',function(){
 })
 
 document.querySelector('#btnSignUp').addEventListener('click',function(){
-    let strEmail = document.querySelector('#txtEmail').value.trim()
+    let strSignUpEmail = document.querySelector('#txtSignUpEmail').value.trim()
     let strName = document.querySelector('#txtName').value.trim()
+    let strSignUpPassword = document.querySelector('#txtSignUpPassword').value.trim()
     let blnError = false
     let strError = ''
     
-    if(validateEmail(strEmail) == true){
+    if(validateEmail(strSignUpEmail) == true){
         blnError = true
         strError += "Invalid Email. "
     }
-    if(validatePassword(strPassword) == true){
+    if(validatePassword(strSignUpPassword) == true){
         blnError = true
         strError += "Invalid Password. "
     }
@@ -141,7 +166,7 @@ document.querySelector('#btnSignUp').addEventListener('click',function(){
 
 //***ANIMAL HOME***
 
-//button to add a new animal
+/*//button to add a new animal
 document.querySelector('#btnNewAnimal').addEventListener('click',function(){
     //open a new card labeled "newAnimal" here?
 })
@@ -149,4 +174,4 @@ document.querySelector('#btnNewAnimal').addEventListener('click',function(){
 //buttont o filter animals by category
 document.querySelector('#btnFilter').addEventListener('click',function(){
     //select from a list 
-})
+})*/

@@ -5,9 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Canyon Crest Animal Tracker</title>
     <link rel="icon" type="image/x-icon" href="imgs/cow.png">
-    <link rel="stylesheet" href="stylesheetindex.css">
-    <!-- BootStrap CDN -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+    <link rel="stylesheet" href="CSS/Bootstrap.css">
+    <link rel="stylesheet" href="CSS/stylesheetindex.css">
     <!-- SweetAlert2 CDN -->
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 </head>
@@ -20,6 +19,7 @@
                 <h1 style="font-size: 4vw;"  class="text-center">Welcome To Canyon Crest Animal Tracker</h1>
                 <div class=" d-flex justify-content-center">
                     <button id="btnLoginSignup" type="button" class="btn btn-light">Login/Sign Up</button>
+                     <a href="testhtml.html">Test</a>
                 </div>
             </div>
         </div>
@@ -29,12 +29,18 @@
             <div class="card body bg-warning">
                 <h2 class="text-center">Login</h2>
                 <form id="loginForm">
-                    <label class="form-label" for="txtEmail">Email</label>
-                    <input class="form-control" id="txtEmail" type="email">
+                    <label class="form-label" for="txtLoginEmail">Email</label>
+                    <input class="form-control" id="txtLoginEmail" type="email">
+                    <div id="emailHelpBlock" class="form-text">
+                        Your username must be a valid email address.
+                    </div>
 
                     <!--PASSWORD CORRECTION NEEDED-->
-                    <label class="form-label" for="txtPassword">Password</label>
-                    <input class="form-control" id="txtPassword" type="password">
+                    <label class="form-label" for="txtLoginPassword">Password</label>
+                    <input class="form-control" id="txtLoginPassword" type="password">
+                    <div id="passwordHelpBlock" class="form-text">
+                        Your password must be at least 6 characters long.
+                    </div>
                     <br>
                     <button id="btnLogin" type="button" class="btn btn-light">Login</button>
                 </form>
@@ -48,19 +54,22 @@
         <div class="card col-6 position-absolute top-50 start-50 translate-middle d-none"  id="SignUpCard">
             <div class="card body bg-warning">
                 <h2 class="text-center">Sign Up</h2>
-                <form id="loginForm">
+                <form id="signUpForm">
                     <!--LOGIN CREDENTIALS-->
-                    <label class="form-label" for="txtEmail">Email</label>
-                    <input class="form-control" id="txtEmail" type="email">
-                    <label class="form-label" for="txtPassword">Password</label>
+                    <label class="form-label" for="txtSignUpEmail">Email</label>
+                    <input class="form-control" id="txtSignUpEmail" type="email">
+                    <label class="form-label" for="txtSignUpPassword">Password</label>
                     <!--NAME AND PHONE-->
-                    <input class="form-control" id="txtPassword" type="password">
+                    <input class="form-control" id="txtSignUpPassword" type="password">
                     <label class="form-label" for="txtFirstName">First Name</label>
                     <input class="form-control" id="txtFirstName" type="text">
                     <label class="form-label" for="txtLastName">Last Name</label>
                     <input class="form-control" id="txtLastName" type="text">
                     <label class="form-label" for="txtTelephone">Phone Number</label>
                     <input class="form-control" id="txtTelephone" type="tel">
+                    <div id="phoneHelpBlock" class="form-text">
+                        Your phone number should be in the format of: (931) 123-4567.
+                    </div>
                     <!-- PHYSICAL ADDRESS-->
                     <label class="form-label" for="txtAddress">Address</label>
                     <input class="form-control" id="txtAddress" type="text">
@@ -72,6 +81,7 @@
                     <input class="form-control" id="txtZip" type="text">
                     <br>
                     <button id="btnSignUp" type="button" class="btn btn-light">SignUp</button>
+                   
                 </form>
                 <button id="btnLoginRef" type="button" class="btn btn-link">Go back to Login!</button>
             </div>
@@ -79,7 +89,6 @@
 
     
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous"></script>
     <script src="javascript/app.js"></script>
 </body>
 </html>

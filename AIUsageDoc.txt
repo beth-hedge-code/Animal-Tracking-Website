@@ -18,3 +18,5 @@ Fixed index image to take up full screen using css style sheet
     prompt - im trying to make an image a take up a full background page. it needs to be reactive and not mess with the image that much this is my css body,html{ height: 100% } .bg { background-image: url(imgs/PhotoFunia-1763751617.jpg); height: 100%; background-position: center; background-repeat: no-repeat; background-size: cover; }
     AI Recommedations used - <body class="bg"> 
 
+#2 
+

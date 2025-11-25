@@ -26,6 +26,19 @@ function validateName(strName){
         return false
     }
 }
+ function validatePhone(strPhone){
+    if(!regPhone.test(strPhone)){
+        document.querySelector('#phoneHelpBlock').classList.remove('text-success')
+        document.querySelector('#phoneHelpBlock').classList.add('text-danger')
+        return false
+    } else {
+        document.querySelector('#phoneHelpBlock').classList.remove('text-danger')
+        document.querySelector('#phoneHelpBlock').classList.add('text-success')
+        return true
+    }
+    
+}
+
 function validatePassword(strPassword){
     if(!regPassword.test(strPassword)){
         document.querySelector('#passwordHelpBlock').classList.remove('text-success')
@@ -69,12 +82,13 @@ document.querySelector('#btnLogin').addEventListener('click',function(){
         strError += "Invalid Password. "
     }
 
+
     if(blnError == true){
         Swal.fire({
             title:'Oh no! Please check your work',
             html:strError,
             icon:'error',
-            confirmButtonColor: '#582c83' 
+            confirmButtonColor: '#d88a0cff'
         })
     }
     else{
@@ -95,9 +109,17 @@ document.querySelector('#btnSignUp').addEventListener('click',function(){
         blnError = true
         strError += "Invalid Email. "
     }
+    if(validatePassword(strPassword) == true){
+        blnError = true
+        strError += "Invalid Password. "
+    }
     if(validateName(strName) == true){
         blnError = true
         strError += "Invalid Name. "
+    }
+    if(validatePhone(strPhone) == true){
+        blnError = true
+        strError += "Invalid Phone Number. "
     }
 
     if(blnError == true){
@@ -105,7 +127,7 @@ document.querySelector('#btnSignUp').addEventListener('click',function(){
             title:'Oh no! Please check your work',
             html:strError,
             icon:'error',
-            confirmButtonColor: '#582c83' 
+            confirmButtonColor: '#d88a0cff' 
         })
     }
     else{

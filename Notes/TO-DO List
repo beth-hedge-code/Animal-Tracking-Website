@@ -1,5 +1,22 @@
 https://placebear.com/
 
+
+Every animal card links to information.html
+Card num updates for #of animals
+const numanimals = 5
+
+
+I will go in and put in animail id from database
+
+while (i > 0) {
+    print out card
+    i=-1
+}
+
+
+
+
+
 General
     Bootstrap Theme
     icon addition

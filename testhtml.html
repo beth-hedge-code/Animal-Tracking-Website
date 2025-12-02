@@ -10,8 +10,9 @@
     <div id="tree-info"></div> <!-- container for your data -->
 
     <script>
+        //FUNCTION TO GRAB AND PRINT DATA
         async function loadTree() {
-            const res = await fetch("http://localhost:3000/tbltrees/1");
+            const res = await fetch("http://localhost:8000/tbltrees/2");
             const data = await res.json();
 
             // Select container
@@ -27,6 +28,10 @@
 
         loadTree();
     </script>
+    <script>
+        //Function to grab and print user data
+    </script>
+    
 
 </body>
 </html>

@@ -31,14 +31,23 @@ function validateEmail(strLoginEmail){
     return true
 
 }
-function validateName(strName){
-    if(strName < 1){
+function validateFirstName(strFirstName){
+    if(strFirstName < 1){
         return true
     }
     else{
         return false
     }
 }
+function validateLastName(strFirstName){
+    if(strFirstName < 1){
+        return true
+    }
+    else{
+        return false
+    }
+}
+
  function validatePhone(strPhone){
     if(!regPhone.test(strPhone)){
         document.querySelector('#phoneHelpBlock').classList.remove('text-success')
@@ -115,18 +124,29 @@ document.querySelector('#btnLogin').addEventListener('click',function(){
             confirmButtonColor: '#d88a0cff'
         })
     }
-    else{
-        //Sends User to Animal Home Page
-        //Got from W3Schools 
-        //No user specfic verfication. 
+    else{ 
+        document.getElementById("loginForm").addEventListener("submit", async (e) => {
+            e.preventDefault(); //Prevents the page from reloading getting rid of our data
+
+            const email = document.getElementById("txtLoginEmail").value;
+            const password = document.getElementById("txtLoginPassword").value;
+
+            await fetch("/add-user", {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify({ email,password })
+            });
+        });
         window.location.replace("animalhome.html");
     }
 })
 
 document.querySelector('#btnSignUp').addEventListener('click',function(){
     let strSignUpEmail = document.querySelector('#txtSignUpEmail').value.trim()
-    let strName = document.querySelector('#txtName').value.trim()
+    let strFirstName = document.querySelector('#txtFirstName').value.trim()
+    let strLastName = document.querySelector('#txtLastName').value.trim()
     let strSignUpPassword = document.querySelector('#txtSignUpPassword').value.trim()
+    let strPhone = document.querySelector('#txtTelephone').value.trim()
     let blnError = false
     let strError = ''
     
@@ -138,9 +158,13 @@ document.querySelector('#btnSignUp').addEventListener('click',function(){
         blnError = true
         strError += "Invalid Password. "
     }
-    if(validateName(strName) == true){
+    if(validateFirstName(strFirstName) == true){
         blnError = true
-        strError += "Invalid Name. "
+        strError += "Invalid First Name. "
+    }
+   if(validateLastName(strLastName) == true){
+        blnError = true
+        strError += "Invalid Last Name. "
     }
     if(validatePhone(strPhone) == true){
         blnError = true
@@ -157,21 +181,11 @@ document.querySelector('#btnSignUp').addEventListener('click',function(){
     }
     else{
         //Would Like to have a Welcome Pop up Happen Some How! 
+        Swal.fire({
+            title: "Welcome!",
+            text: "Your account has been created.",
+            icon: "success"
+        });
         window.location.replace("animalhome.html");
     }
 })
-
-
-
-
-//***ANIMAL HOME***
-
-/*//button to add a new animal
-document.querySelector('#btnNewAnimal').addEventListener('click',function(){
-    //open a new card labeled "newAnimal" here?
-})
-
-//buttont o filter animals by category
-document.querySelector('#btnFilter').addEventListener('click',function(){
-    //select from a list 
-})*/

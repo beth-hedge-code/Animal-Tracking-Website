@@ -51,6 +51,160 @@ Fixed index image to take up full screen using css style sheet
 
          Followed by prompting it why it wasnt working leading to the img solution from the folder move.
 
+#3 Had trouble researching how to get data from a database to display in html as text for a webpage. Used Chat GPT to Show and explain how with
+a fake trees database. Here is the examples
 
-            
+    *Index.js
+        const express = require("express");
+        const sqlite3 = require("sqlite3").verbose();
+        const app = express();
+        const port = 3000;
+
+        // Allow frontend to access files
+        app.use(express.static("."));
+
+        // Open DB
+        const db = new sqlite3.Database("./trees.db");
+
+        // API route
+        app.get("/tbltrees/:id", (req, res) => {
+            const id = req.params.id;
+
+            db.get("SELECT * FROM tbltrees WHERE TreeID = ?", [id], (err, row) => {
+                if (err) return res.status(500).json({ error: err.message });
+                if (!row) return res.status(404).json({ error: "Tree not found" });
+
+                res.json(row);
+            });
+        });
+
+        app.listen(port, () => {
+            console.log(`Server running at http://localhost:${port}`);
+        });
+
+    *testhtml.html
+        <!DOCTYPE html>
+        <html lang="en">
+        <head>
+            <meta charset="UTF-8">
+            <meta name="viewport" content="width=device-width, initial-scale=1.0">
+            <title>Document</title>
+        </head>
+        <body>
+            <h1>Tree Info</h1>
+            <div id="tree-info"></div> <!-- container for your data -->
+
+            <script>
+                //FUNCTION TO GRAB AND PRINT DATA
+                async function loadTree() {
+                    const res = await fetch("http://localhost:3000/tbltrees/2");
+                    const data = await res.json();
+
+                    // Select container
+                    const container = document.getElementById("tree-info");
+
+                    // Populate container
+                    container.innerHTML = `
+                        <p><strong>Tree ID:</strong> ${data.TreeID}</p>
+                        <p><strong>Name:</strong> ${data.Name}</p>
+                        <p><strong>Species:</strong> ${data.Species}</p>
+                    `;
+                }
+
+                loadTree();
+            </script>
+
+        </body>
+        </html>
+
+    prompt -> It took quite a bit of prompting to finally get it to give me a working project and some research on my end.
+                this result helped me figure out what i need to research. 
+
+
+#4 Used chatGPT to take a mysql database script from our created database in dbdiagram (a database creation software) and reformat it in a 
+ way that I (Beth) could use to quickly make our needed tables using a sqlite extenstion
+
+#5 Asked chatGPT to clear up how to use multiple node.js files and how i Should structure that inside a project.
+                    
+#6 Can you have  the following while loop make it so for every animal, it creates a new card in a html file?
+for refrnce, here is the while loop: while (animalNum > 0) { //print out card console.log("this is an animal") //window.location.replace("testhtml.html")
+//decrase animalnum by a integer
+animalNum -= 1
+
+
+
+}
+and this is the span for a new card in html: <span class="position-absolute top-50 start-50 translate-middle"> <div class="card" style="width: 10rem;"> <div class="card-header bg-dark text-white text-center">Animal Name</div>
+        <img src="https://placebear.com/g/150/150" class="card-img-center" alt="animal photo"></img>
+
+        <div class="card-body d-flex justify-content-center bg-warning">
+            <button type="button" class="btn btn-warning"><a href="imgs/cow.png">COW FARM</a></button>
+        </div>
+
+    </div>
+</span>
+
+Got it 👍 — right now your while loop just logs text, but you want it to actually inject cards into your HTML file dynamically. To do that, you’ll need to manipulate the DOM instead of using console.log.
+Here’s a clean example that takes your loop and appends a new card for each animal:
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Animal Cards</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+  <!-- Container where cards will be added -->
+  <div id="card-container" class="d-flex flex-wrap justify-content-center"></div>
+
+  <script>
+    let animalNum = 5; // number of animals
+    let animals = [
+      { name: "Bear", img: "https://placebear.com/g/150/150", link: "imgs/bear.png" },
+      { name: "Cow", img: "imgs/cow.png", link: "imgs/cow.png" },
+      { name: "Dog", img: "https://place-puppy.com/150x150", link: "imgs/dog.png" },
+      { name: "Cat", img: "https://placekitten.com/150/150", link: "imgs/cat.png" },
+      { name: "Horse", img: "imgs/horse.png", link: "imgs/horse.png" }
+    ];
+
+    let container = document.getElementById("card-container");
+
+    let i = 0;
+    while (animalNum > 0) {
+      let animal = animals[i];
+
+      // Create card element
+      let card = document.createElement("span");
+      card.className = "position-relative m-3"; // spacing between cards
+      card.innerHTML = `
+        <div class="card" style="width: 10rem;">
+          <div class="card-header bg-dark text-white text-center">${animal.name}</div>
+          <img src="${animal.img}" class="card-img-center" alt="animal photo">
+          <div class="card-body d-flex justify-content-center bg-warning">
+            <button type="button" class="btn btn-warning">
+              <a href="${animal.link}" class="text-dark text-decoration-none">${animal.name.toUpperCase()} FARM</a>
+            </button>
+          </div>
+        </div>
+      `;
+
+      // Append card to container
+      container.appendChild(card);
+
+      // Decrease counter
+      animalNum -= 1;
+      i++;
+    }
+  </script>
+</body>
+</html>
+
+
+🔑 Key points:
+- Instead of console.log, use document.createElement and innerHTML to build the card.
+- Append each card to a container (#card-container).
+- Use an array of animals so each card can have unique data (name, image, link).
+- The while loop decreases animalNum until it hits zero, creating one card per iteration.
+👉 This way, when you open the HTML file in a browser, you’ll see multiple cards generated dynamically.
+Would you like me to also show you how to replace the while loop with a cleaner forEach loop over the animals array? It’s often more readable and avoids manual counters.
 

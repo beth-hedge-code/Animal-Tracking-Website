@@ -112,4 +112,11 @@ ALTER TABLE `tblanimalLocation` ADD FOREIGN KEY (`locationID`) REFERENCES `tblVe
 
 ALTER TABLE `tblVetVisit` ADD FOREIGN KEY (`vetVisitid`) REFERENCES `tblVetVisitdesc` (`vetVisitID`)
 
-drop table tblUsers;
+drop table tblEmployee;
+
+INSERT INTO tblanimalLocation 
+(locationID, locationName, email, phone, address, city, state, zip_code)
+VALUES
+('RANCH001', 'Lone Oak Ranch', 'contact@loneoakranch.com', '555-210-3344', '1840 Prairie Creek Rd', 'Amarillo', 'TX', '79101'),
+('RANCH002', 'Silver Spur Animal Range', 'info@silverspurrange.com', '555-422-8899', '752 Silver Spur Trail', 'Cheyenne', 'WY', '82001'),
+('RANCH003', 'Golden Horseshoe Ranch', 'hello@goldenhorseshoe.com', '555-899-4432', '99 Horseshoe Loop', 'Billings', 'MT', '59101');

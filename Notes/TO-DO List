@@ -1,38 +1,61 @@
-https://placebear.com/
-
-
-Every animal card links to information.html
-Card num updates for #of animals
-const numanimals = 5
-
-
-I will go in and put in animail id from database
-
-while (i > 0) {
-    print out card
-    i=-1
-}
-
-
-
-
-
 General
-    Bootstrap Theme
     icon addition
+    Beth- Needs to document AI uses 
 
 index page
-    intro cleanup
-    login card
-    signup card
-    database integration
-    Make a viewable database connected card that updates based on animal inputed
-    scroll on sign up card
-   
+    scroll and sizing on signup card
+    fix all email and password checking
+    make sure all alerts and buttons work well
+    make sure it is alerting the user to put in all info correctly
 
 animal home page
     add functionality to the new animal and filter buttons. former should allow the creation of a new animal while the latter filters based on the criterion (aka details) burchfiled requested of us.
+    Animal cards created based on number of animals 
+    can we make sure only animals attached to the logged in user can see them?
 
-keep up with any time they visit the vet for each animal, as well as if the appointment type is emergency or routine, and any vaccines given, and notes about the vet visit
-keep up with what they feed the animals (time, date, type of food, and how much)
+Animal wikipedia page
+    create bare bones
+    put in info from database
+    figure out how the buttons link from animal home page cards
+
+General Checks
+    Index Page 
+        > lighthouse score? - 
+        > Comment and clean up code - 
+        > Can explain fully? -
+        > Looks clean? -
+        > Works with database? -
+        > Swal alerts working -
+        > Bootstrap theme used? - X
+        > Mobile/ Responsive? -
+    
+    Animal home Page
+        > lighthouse score? - 
+        > Comment and clean up code - 
+        > Can explain fully? -
+        > Looks clean? -
+        > Works with database? -
+        > Swal alerts working -
+        > Bootstrap theme used? - X
+        > Mobile/ Responsive? -
+
+    Animal Fact Sheet page
+        > lighthouse score? - 
+        > Comment and clean up code - 
+        > Can explain fully? -
+        > Looks clean? -
+        > Works with database? - X
+        > Swal alerts working - X
+        > Bootstrap theme used? - X
+        > Mobile/ Responsive? -
+
+    Vet Page 
+        > lighthouse score? - 
+        > Comment and clean up code - 
+        > Can explain fully? -
+        > Looks clean? -
+        > Works with database? - X
+        > Swal alerts working - X
+        > Bootstrap theme used? - X
+        > Mobile/ Responsive? -
 

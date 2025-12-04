@@ -5,10 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Animals of Canyon Crest</title>
     <link rel="icon" type="image/x-icon" href="imgs/cow.png">
-    <!-- BootStrap CDN -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
-    <!-- SweetAlert2 CDN -->
-    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <link rel="stylesheet" href="CSS/Bootstrap.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css">
 </head>
 </head>
@@ -19,8 +16,42 @@
         <div class="card col-5" style="background-color: rgb(62, 48, 2);">
             <div class="card-body">
     <!--Animal Index-->
-    <button>New Animal</button> <button>Filter</button>
+    <button id="btnNewAnimal" class="btn btn-success btn-sm me-2">New Animal</button>
+    <button id="btnFilter" class="btn btn-secondary btn-sm">Filter</button>
     <!--List of animals to put onto the icon-->
+    <div id="animalCardsContainer" class="d-flex flex-wrap justify-content-center mt-3"></div>
+
+    <!-- Filter panel (hidden by default) -->
+    <div id="filterPanel" class="mt-2 p-2 bg-secondary text-white rounded d-none">
+      <div class="form-check">
+        <input class="form-check-input" type="checkbox" value="name" id="chkName" checked>
+        <label class="form-check-label" for="chkName">Name</label>
+      </div>
+      <div class="form-check">
+        <input class="form-check-input" type="checkbox" value="species" id="chkSpecies" checked>
+        <label class="form-check-label" for="chkSpecies">Species</label>
+      </div>
+      <div class="form-check">
+        <input class="form-check-input" type="checkbox" value="sex" id="chkSex">
+        <label class="form-check-label" for="chkSex">Sex</label>
+      </div>
+      <div class="form-check">
+        <input class="form-check-input" type="checkbox" value="dob" id="chkDob">
+        <label class="form-check-label" for="chkDob">Date of Birth</label>
+      </div>
+      <div class="mt-2">
+        <label class="form-label">Direction</label>
+        <select id="sortDirection" class="form-select form-select-sm">
+          <option value="asc">Ascending</option>
+          <option value="desc">Descending</option>
+        </select>
+      </div>
+      <div class="mt-2 d-flex justify-content-end">
+        <button id="applyFilter" class="btn btn-sm btn-primary me-2">Apply</button>
+        <button id="clearFilter" class="btn btn-sm btn-light">Clear</button>
+      </div>
+    </div>
+
     <!-- animal info -->
                 <h1 class="d-flex justify-content-center">Name of animal</h1>
                 <div class="container-fluid col-4 bg-dark rounded "> 
@@ -84,6 +115,5 @@
                 </div>
 </body>
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous"></script>
 <script src="javascript/newanimal.js"></script>
 </html>

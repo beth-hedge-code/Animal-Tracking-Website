@@ -5,22 +5,16 @@ const router = express.Router();
 //allows form parsing
 router.use(express.urlencoded({ extended: true }));
 
+//Used for testing if the route is working
 console.log("Login.js Works!")
 
+//Allows use of the database
 const db = new sqlite3.Database("./Animals.db");
 
-// Create table if it doesn't exist
-/* db.run(`
-    CREATE TABLE IF NOT EXISTS tblUsers (
-        userid INTEGER PRIMARY KEY AUTOINCREMENT,
-        email TEXT NOT NULL,
-        password TEXT NOT NULL
-    )
-`);
- */
-
 // Handle form POST and insert into database
-router.post("/submit", (req, res) => {
+// Gathers user inputed data from index.html's login form
+// Takes that data and runs a sql command to insert data into tables
+router.post("/login", (req, res) => {
     const {txtLoginEmail, txtLoginPassword } = req.body;
 
     db.run(`INSERT INTO tblUsers (email, password) VALUES (?, ?)`, [txtLoginEmail, txtLoginPassword], function (err) {
@@ -29,21 +23,13 @@ router.post("/submit", (req, res) => {
             res.status(500).send("Error saving data.");
         } else {
             console.log(`A row has been inserted with rowid ${this.lastID}`);
-            //res.send(`<h2>Thank you,! Your message was saved.</h2>
-                      //<a href="/">Go back</a>`);
-            return res.redirect('./animalhome.html')
         }
     });
+    return res.redirect('./animalhome.html'); //Redirects to Animal Homepage
 });
 
-module.exports = router;
+//Exports Router
+module.exports = router; 
 
 
 
-/* //db.run(sql,params,callback)
-db.run('INSERT INTO tblUsers(userid, email, password, employeeid) VALUES(?,?,?,?)',[1,'farmer1','Password1',1],function (err) {
-    if(err) {
-        return console.log(err.message); 
-    }
-    console.log('Row was added to the table: ${userid}');
-})  */

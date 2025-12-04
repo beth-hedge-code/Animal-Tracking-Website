@@ -1,0 +1,36 @@
+https://placebear.com/
+
+
+Every animal card links to information.html
+Card num updates for #of animals
+const numanimals = 5
+
+
+I will go in and put in animail id from database
+
+while (i > 0) {
+    print out card
+    i=-1
+}
+
+
+
+
+// Create table if it doesn't exist
+/* db.run(`
+    CREATE TABLE IF NOT EXISTS tblUsers (
+        userid INTEGER PRIMARY KEY AUTOINCREMENT,
+        email TEXT NOT NULL,
+        password TEXT NOT NULL
+    )
+`);
+ */
+
+
+/* //db.run(sql,params,callback)
+db.run('INSERT INTO tblUsers(userid, email, password, employeeid) VALUES(?,?,?,?)',[1,'farmer1','Password1',1],function (err) {
+    if(err) {
+        return console.log(err.message); 
+    }
+    console.log('Row was added to the table: ${userid}');
+})  */

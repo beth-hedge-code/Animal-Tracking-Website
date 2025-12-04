@@ -7,8 +7,7 @@
     <link rel="icon" type="image/x-icon" href="imgs/cow.png">
     <link rel="stylesheet" href="CSS/Bootstrap.css">
     <link rel="stylesheet" href="CSS/stylesheetindex.css">
-    <!-- SweetAlert2 CDN -->
-    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <!--removed sweet alert here-->
 </head>
 <body class="bg">
     
@@ -19,15 +18,16 @@
                 <h1 style="font-size: 4vw;"  class="text-center">Welcome To Canyon Crest Animal Tracker</h1>
                 <div class=" d-flex justify-content-center">
                     <button id="btnLoginSignup" type="button" class="btn btn-light">Login/Sign Up</button>
+                    <a href="http://localhost:8000/factsheet.html?animalid=4">bob</a>
                 </div>
             </div>
         </div>
     
     <!--LOGIN CARD BEGINS-->
         <div class="card col-6 position-absolute top-50 start-50 translate-middle d-none"  id="LoginCard">
-            <div class="card body bg-warning">
+            <div class="card-body bg-warning">
                 <h2 class="text-center">Login</h2>
-                <form id="loginForm" action="http://localhost:8000/submit" method="post">
+                <form id="loginForm" action="/login" method="post">
                     <label class="form-label" for="txtLoginEmail">Email</label>
                     <input class="form-control" id="txtLoginEmail" name="txtLoginEmail" type="email">
                     <div id="emailHelpBlock" class="form-text">
@@ -51,35 +51,45 @@
     <!--GATHER MORE INFORMATION ON USER-->
     <!--CHECKS NEEDED-->
         <div class="card col-6 position-absolute top-50 start-50 translate-middle d-none"  id="SignUpCard">
-            <div class="card body bg-warning">
+            <div class="card-body bg-warning">
                 <h2 class="text-center">Sign Up</h2>
-                <form id="signUpForm">
+                <form id="signUpForm"  action="/signup" method="post">
                     <!--LOGIN CREDENTIALS-->
                     <label class="form-label" for="txtSignUpEmail">Email</label>
-                    <input class="form-control" id="txtSignUpEmail" type="email">
+                    <input class="form-control" id="txtSignUpEmail" name="txtSignUpEmail" type="email">
                     <label class="form-label" for="txtSignUpPassword">Password</label>
+                    <input class="form-control" id="txtSignUpPassword" name="txtSignUpPassword" type="password">
                     <!--NAME AND PHONE-->
-                    <input class="form-control" id="txtSignUpPassword" type="password">
                     <label class="form-label" for="txtFirstName">First Name</label>
-                    <input class="form-control" id="txtFirstName" type="text">
+                    <input class="form-control" id="txtFirstName" name="txtFirstName" type="text">
                     <label class="form-label" for="txtLastName">Last Name</label>
-                    <input class="form-control" id="txtLastName" type="text">
+                    <input class="form-control" id="txtLastName" name="txtLastName" type="text">
+                    <label class="form-label" for="txtRole">Role</label>
+                    <input class="form-control" id="txtRole" name="txtRole" type="text">
                     <label class="form-label" for="txtTelephone">Phone Number</label>
-                    <input class="form-control" id="txtTelephone" type="tel">
+                    <input class="form-control" id="txtTelephone" name="txtTelephone" type="tel">
                     <div id="phoneHelpBlock" class="form-text">
                         Your phone number should be in the format of: (931) 123-4567.
                     </div>
                     <!-- PHYSICAL ADDRESS-->
                     <label class="form-label" for="txtAddress">Address</label>
-                    <input class="form-control" id="txtAddress" type="text">
+                    <input class="form-control" id="txtAddress" name="txtAddress" type="text">
                     <label class="form-label" for="txtCity">City</label>
-                    <input class="form-control" id="txtCity" type="text">
+                    <input class="form-control" id="txtCity" name="txtCity" type="text">
                     <label class="form-label" for="txtState">State</label>
-                    <input class="form-control" id="txtState" type="text">
+                    <input class="form-control" id="txtState" name="txtState" type="text">
                     <label class="form-label" for="txtZip">Zip</label>
-                    <input class="form-control" id="txtZip" type="text">
+                    <input class="form-control" id="txtZip" name="txtZip" type="text">
                     <br>
-                    <button id="btnSignUp" type="button" class="btn btn-light">SignUp</button>
+                    <!--EMPLOYED AT?-->
+                    <select class="form-select" name="locationID" aria-label="Default select example">
+                        <option selected>Employed at?</option>
+                        <option value="Lone Oak Ranch">Lone Oak Ranch</option>
+                        <option value="Silver Spur Animal Range">Silver Spur Animal Range</option>
+                        <option value="Golden Horseshoe Ranch">Golden Horseshoe Ranch</option>
+                    </select>
+                    
+                    <button id="btnSignUp" type="submit" class="btn btn-light">SignUp</button>
                    
                 </form>
                 <button id="btnLoginRef" type="button" class="btn btn-link">Go back to Login!</button>
@@ -90,5 +100,6 @@
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script src="javascript/app.js"></script>
     <script src="Routes/login.js"></script>
+    <script src="Routes/signin.js"></script>
 </body>
 </html>

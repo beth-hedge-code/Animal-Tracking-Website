@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Animal Fact Sheet</title>
+    <link rel="stylesheet" href="CSS/Bootstrap.css">
+    <link rel="stylesheet" href="CSS/stylesheetindex.css">
+</head>
+<body class="bg">
+
+<div class="card position-absolute top-50 start-50 translate-middle vh-100" id="animalInfo">
+    <div class="card-body bg-danger">
+        <div class="container-fluid vh-100 bg-dark rounded p-4">
+            <h1 id="animalname" class="d-flex text-white justify-content-center mb-4"></h1>
+
+            <!-- Top section: Image + description, species, breed -->
+            <div class="d-flex flex-column flex-md-row align-items-start justify-content-center gap-4 mb-4">
+                <img id="animalImage" src="https://placebear.com/g/300/300" alt="Animal Image" class="img-fluid rounded" style="max-width:300px;">
+
+                <div class="text-white" style="font-size: 20px;">
+                    <p><strong>Description:</strong> <span id="description"></span></p>
+                    <p><strong>Species:</strong> <span id="species"></span></p>
+                    <p><strong>Breed:</strong> <span id="breed"></span></p>
+                </div>
+            </div>
+
+            <div class="row text-white" style="font-size: 20px;">
+
+                <!-- Column 1 -->
+                <div class="col-md-6">
+                    <p><strong>DOB:</strong> <span id="dob"></span></p>
+                    <p><strong>Sire:</strong> <span id="sire"></span></p>
+                    <p><strong>Dam:</strong> <span id="dam"></span></p>
+                    <p><strong>Disposition:</strong> <span id="disposition"></span></p>
+                </div>
+
+                <!-- Column 2 -->
+                <div class="col-md-6">
+                    <p><strong>Feed:</strong> <span id="feed"></span></p>
+                    <p><strong>Location:</strong> <span id="location"></span></p>
+                    <p><strong>Birth Weight:</strong> <span id="birthWeight"></span></p>
+                </div>
+
+            </div>
+
+            
+            <!-- Buttons -->
+            <div class="d-flex justify-content-center mt-4 gap-3">
+                <a href="index.html" class="btn btn-light">Back to Menu</a>
+                <a id="vetPageLink" class="btn btn-info">Vet Page</a>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script src="javascript/animalfactapp.js"></script>
+</body>
+</html>
+
+
+
+
+<!-- <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Animal Fact Sheet</title>
+    <link rel="icon" type="image/x-icon" href="imgs/cow.png">
+    <link rel="stylesheet" href="CSS/stylesheetindex.css">
+    <link rel="stylesheet" href="CSS/Bootstrap.css">
+</head>
+<body class="bg">
+    
+    
+     Infromation card (shows name of animal)
+        <div class="card position-absolute top-50 start-50 translate-middle vh-100 " id="animalInfo">
+            <div class="card-body bg-warning">
+                <div class="container-fluid vh-100 bg-dark rounded "> 
+                    <h1 class="d-flex text-white justify-content-center">Pet ID: COW-1674-25</h1>
+                    <div class="d-flex col justify-content-center">
+                        <img src="https://placebear.com/g/450/250" alt="ur mom">
+                    </div>
+                    <div class="d-flex col justify-content-center">
+                        <div class="d-flex justify-content-center">
+                            <span id="description" style="font-size: 20px;" class="text-white"></span>
+                        </div>
+                        <div class="d-flex justify-content-center">
+                            <span id="species" style="font-size: 20px;" class="text-white"></span>
+                        </div>
+                        <div class="d-flex justify-content-center">
+                            <span id="birthDate" style="font-size: 20px;" class="text-white"></span>
+                        </div>
+                        <div class="d-flex justify-content-center">
+                            <span id="animalSex" style="font-size: 20px;" class="text-white"></span>
+                        </div>
+                        <div class="d-flex justify-content-center">
+                            <span id="lastVisit" style="font-size: 20px;" class="text-white"></span>
+                        </div>
+                        <div class="d-flex justify-content-center">
+                            <span id="dame" style="font-size: 20px;" class="text-white"></span>
+                        </div>
+                        <div class="d-flex justify-content-center">
+                            <span id="sire" style="font-size: 20px;" class="text-white"></span>
+                        </div>
+                        <div class="d-flex justify-content-center">
+                            <span id="birthWeight" style="font-size: 20px;" class="text-white"></span>
+                        </div>
+                    </div>
+                </div>
+                <div>Back to menu</div>
+                </div>
+            </div>
+        </div>
+    
+   Vetrenarian info
+        <div class="card col-6 position-absolute top-50 start-50 translate-middle d-none"  id="vetInfo">
+                <div>Check Vet Records</div>
+                    <div class="d-flex justify-content-center">
+                        <span id="visitDate" style="font-size: 20px;" class="text-white">Visit Date:11/25/2025</span>
+                    </div>
+                    <div class="d-flex justify-content-center">
+                        <span id="visitType" style="font-size: 20px;" class="text-white">Visit Type:Checkup</span>
+                    </div>
+                    <div class="d-flex justify-content-center">
+                        <span id="vaccines" style="font-size: 20px;" class="text-white">Vaccines: Bovine Viral Diarrhea, Bovine Rhinotracheitis</span>
+                    </div>
+                    <div class="d-flex justify-content-center">
+                        <span id="visitNotes" style="font-size: 20px;" class="text-white">Notes: animal was limping, hoof was found to be sensitive. gave client a referral to hoof specialist.</span>
+                    </div>
+                </div>
+        </div>
+    
+    Diet card
+        <div class="card col-6 position-absolute top-50 start-50 translate-middle d-none"  id="SignUpCard">
+                <div class="container-fluid col-4 bg-dark rounded "> 
+                    <div class="d-flex justify-content-center">
+                        <span id="foodTime" style="font-size: 20px;" class="text-white">current weight: 15'2"</span>
+                    </div>
+                    <div class="d-flex justify-content-center">
+                        <span id="foodDate" style="font-size: 20px;" class="text-white">last meal: 11/25/2025</span>
+                    </div>
+                    <div class="d-flex justify-content-center">
+                        <span id="foodType" style="font-size: 20px;" class="text-white">type: Hay</span>
+                    </div>
+                    <div class="d-flex justify-content-center">
+                        <span id="foodAmount" style="font-size: 20px;" class="text-white">amount: 6lbs </span>
+                    </div>
+                </div>
+        </div> 
+        
+
+    
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="javascript/animalfactapp.js"></script>
+</body>
+</html> -->

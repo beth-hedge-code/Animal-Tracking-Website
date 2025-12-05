@@ -1,11 +1,13 @@
 document.addEventListener("DOMContentLoaded", () => {
-    const animalID = new URLSearchParams(window.location.search).get("animalid");
+    const animalID = new URLSearchParams(window.location.search).get("animalid");//Searches the url to get the animalID
 
-    fetch(`http://localhost:8000/api/animaldes/${animalID}`)
+    fetch(`http://localhost:8000/api/animaldes/${animalID}`)//grabs animal info based on animalid
+        //error checking
         .then(res => {
             if (!res.ok) throw new Error("Network response was not ok");
             return res.json();
         })
+        //puts data into the html
         .then(data => {
             document.getElementById("animalname").textContent = data.animalName;
             document.getElementById("description").textContent = data.description;
@@ -19,6 +21,7 @@ document.addEventListener("DOMContentLoaded", () => {
             document.getElementById("location").textContent = data.locationName;
             document.getElementById("birthWeight").textContent = data.birthWeight;
 
+            //creates the vetpage link attached the animalid 
             const vetLink = document.getElementById("vetPageLink");
             vetLink.href = `vetpage.html?animalid=${animalID}`;
         })

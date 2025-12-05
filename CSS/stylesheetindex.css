@@ -1,10 +1,12 @@
-body,html{
-  height: 100%;
+body, html {
+  min-height: 100%;
+  margin: 0;
+  padding: 0;
 }
 
 .bg {
   background-image: url("../imgs/PhotoFunia-1763751617.jpg") !important;
-  height: 100%;
+  background-attachment: fixed;  /* keeps background still */
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;

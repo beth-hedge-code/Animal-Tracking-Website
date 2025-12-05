@@ -1,0 +1,44 @@
+<!--LightHouse Accessibility Score: ?-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Animal Table</title>
+    <link rel="icon" type="image/x-icon" href="imgs/cow.png">
+    <link rel="stylesheet" href="CSS/Bootstrap.css">
+    <link rel="stylesheet" href="CSS/stylesheetindex.css">
+</head>
+
+<body class="bg">
+<div class="container mt-4 mb-5">
+    <div class="card shadow mx-auto" style="max-width: 650px;" id="animalInfo">
+        <div class="card-body bg-danger rounded">
+            <div class="bg-dark rounded p-4">
+                <table id="tblAnimals" class="table table-striped table-dark">
+                    <thead>
+                    <tr>
+                        <!--table labels-->
+                        <th scope="col">ID</th>
+                        <th scope="col">Name</th>
+                        <th scope="col">Action</th>
+                    </tr>
+                    </thead>
+                    <!--where the javascript inserts data from-->
+                    <tbody></tbody>
+                </table>
+
+                <div class="d-flex justify-content-center mt-4 gap-3">
+                    <!--Animal Index-->
+                    <button id="btnNewAnimal" class="btn btn-success btn-sm me-2">New Animal</button>
+                    <button id="btnFilter" class="btn btn-primary btn-sm">Filter</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="javascript/AnimalTable.js"></script>
+</body>
+</html>

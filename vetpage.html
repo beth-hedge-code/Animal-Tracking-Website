@@ -1,33 +1,46 @@
+<!--LightHouse Accessibility Score: 100-->
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Vet Page</title>
+    <link rel="icon" type="image/x-icon" href="imgs/cow.png">
     <link rel="stylesheet" href="CSS/Bootstrap.css">
     <link rel="stylesheet" href="CSS/stylesheetindex.css">
 </head>
+
 <body class="bg">
+<!--Mobile Resposive Card-->
+<div class="container mt-4 mb-5">
+    <div class="card shadow mx-auto" style="max-width: 650px;" id="animalInfo">
+        <div class="card-body bg-danger rounded">
+            <div class="bg-dark rounded p-4">
 
-<div class="container vh-100 py-4">
-    <h1 class="text-center text-white mb-4">Vet Records</h1>
+                <h1 class="text-center text-white mb-4">Vet Records</h1>
 
-    <div id="vetVisitsContainer">
-       <span id="vetName"></span>
-        <span id="vetRole"></span>
-        <span id="vetPhone"></span>
-        <span id="vetAddress"></span>
-        <span id="vetLicense"></span>
+                <!--Using vetpageapp.js and vetroute.js we display data from the database-->
+                <div id="vetVisitsContainer" class="text-white" style="font-size: 20px;">
+                    
+                    <p><strong>Veterinarian: </strong><span id="vetName"></span></p>
+                    <p><strong>Role: </strong><span id="vetRole"></span></p>
+                    <p><strong>Contact Info: </strong><span id="vetPhone"></span></p>
+                    <p><strong>Vet Location: </strong><span id="vetAddress"></span></p>
+                    <p><strong>License Held: </strong><span id="vetLicense"></span></p>
+                    <br>
+                    <p><strong>Visit Date: </strong><span id="visitDate"></span></p>
+                    <p><strong>Weight At Visit: </strong><span id="weight"></span></p>
+                    <p><strong>Visit Notes: </strong><span id="visitDescription"></span></p>
+                    <p><strong>Vaccinations Given Against: </strong><span id="vaccinations"></span></p>
+                </div>
+                
+                <!--Navigation back to login page (Should change to animal table home)-->
+                <div class="d-flex justify-content-center mt-4 gap-3">
+                    <a href="index.html" class="btn btn-light">Back to Menu</a>
+                </div>
 
-        <span id="visitDate"></span>
-        <span id="weight"></span>
-        <span id="visitDescription"></span>
-
-        <span id="vaccinations"></span>
-    </div>
-
-    <div class="d-flex justify-content-center mt-4 gap-3">
-        <a href="index.html" class="btn btn-light">Back to Menu</a>
+            </div>
+        </div>
     </div>
 </div>
 

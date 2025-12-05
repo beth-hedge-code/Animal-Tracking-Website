@@ -1,12 +1,13 @@
 document.addEventListener("DOMContentLoaded", () => {
-    const animalID = new URLSearchParams(window.location.search).get("animalid");
+    const animalID = new URLSearchParams(window.location.search).get("animalid"); //Searches the url to get the animalID
 
-    fetch(`http://localhost:8000/api/vet/${animalID}`)
+    fetch(`http://localhost:8000/api/vet/${animalID}`)//grabs vet info based on animalid
         .then(res => {
             if (!res.ok) throw new Error("Network response was not ok");
             return res.json();
         })
         .then(visits => {
+            //If animal has no visits displays to users a message
             if (!visits || visits.length === 0) {
                 document.getElementById("vetVisitsContainer").textContent = "No vet visits found.";
                 return;
@@ -27,7 +28,7 @@ document.addEventListener("DOMContentLoaded", () => {
             document.getElementById("weight").textContent = visit.weight;
             document.getElementById("visitDescription").textContent = visit.visitDescription || "N/A";
 
-            // Vaccinations
+            // Vaccinations info
             document.getElementById("vaccinations").textContent = visit.vaccinations.join(", ") || "None";
         })
         .catch(err => console.error(err));

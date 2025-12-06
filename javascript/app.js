@@ -1,11 +1,9 @@
-//***STUFF***
+//***Regular Expressions***
 const regEmail = /[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?/
 const regPhone = /^([+]?\d{1,2}[-\s]?|)\d{3}[-\s]?\d{3}[-\s]?\d{4}$/
 const regPassword = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[a-zA-Z]).{8,}$/
 
-//***INDEX***
-
-//Functions
+//Functions for input validation
 function validateEmail(strSignUpEmail){
     if(!regEmail.test(strSignUpEmail)){
         document.querySelector('#emailHelpBlock').classList.remove('text-success')
@@ -83,7 +81,9 @@ function validatePassword(strSignUpPassword){
     return true
 }
 
-// Buttons to switch cards (NO USER INPUT) on Index
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+// Button event listeners to switch cards
 document.querySelector('#btnLoginSignup').addEventListener('click',function(){
     document.querySelector('#LoginCard').classList.remove('d-none')
     document.querySelector('#WelcomeCard').classList.add('d-none')
@@ -97,51 +97,65 @@ document.querySelector('#btnLoginRef').addEventListener('click',function(){
     document.querySelector('#SignUpCard').classList.add('d-none')
 })
 
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-// Buttons for user inputs
-document.querySelector('#btnLogin').addEventListener('click',function(){
-    let strLoginEmail = document.querySelector('#txtLoginEmail').value.trim()
-    let strLoginPassword = document.querySelector('#txtLoginPassword').value.trim()
-    let blnError = false
-    let strError = ''
-    
-    if(validateEmail(strLoginEmail) == true){
-        blnError = true
-        strError += "Invalid Email. "
+//LOGIN
+document.querySelector('#btnLogin').addEventListener('click', async function(e){
+    e.preventDefault();
+
+    let email = document.querySelector('#txtLoginEmail').value.trim();
+    let password = document.querySelector('#txtLoginPassword').value.trim();
+    let blnError = false;
+    let strError = '';
+
+    if(!validateEmail(email)){
+        blnError = true;
+        strError += '<p>You must enter a valid email.</p>';
+    }
+    if(!validatePassword(password)){
+        blnError = true;
+        strError += '<p>You must enter a valid Password.</p>';
     }
 
-    if(validatePassword(strLoginPassword) == true){
-        blnError = true
-        strError += "Invalid Password. "
-    }
-
-
-    if(blnError == true){
+    if(blnError){
         Swal.fire({
             title:'Oh no! Please check your work',
             html:strError,
             icon:'error',
             confirmButtonColor: '#d88a0cff'
-        })
-    }
-    else{ 
-        document.getElementById("loginForm").addEventListener("submit", async (e) => {
-            e.preventDefault(); //Prevents the page from reloading getting rid of our data
-
-            const email = document.getElementById("txtLoginEmail").value;
-            const password = document.getElementById("txtLoginPassword").value;
-
-            await fetch("/add-user", {
-                method: "POST",
-                headers: { "Content-Type": "application/json" },
-                body: JSON.stringify({ email,password })
-            });
         });
-        window.location.replace("animalhome.html");
+        return;
     }
-})
 
-document.querySelector('#btnSignUp').addEventListener('click',function(){
+    const response = await fetch("/login", {
+        method: "POST",
+        headers: { "Content-Type": "application/x-www-form-urlencoded" },
+        body: new URLSearchParams({
+            txtLoginEmail: email,
+            txtLoginPassword: password
+        })
+    });
+
+    const data = await response.json();
+
+    if(data.error){
+        Swal.fire({
+            title:"Login Failed",
+            text:data.error,
+            icon:"error"
+        });
+        return;
+    }
+
+    window.location.href = `./AnimalTable.html?userid=${data.userid}`;
+});
+
+
+
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//Sign UP
+document.querySelector('#btnSignUp').addEventListener('click',async function(e){
+    e.preventDefault();
     let strSignUpEmail = document.querySelector('#txtSignUpEmail').value.trim()
     let strFirstName = document.querySelector('#txtFirstName').value.trim()
     let strLastName = document.querySelector('#txtLastName').value.trim()
@@ -149,26 +163,30 @@ document.querySelector('#btnSignUp').addEventListener('click',function(){
     let strPhone = document.querySelector('#txtTelephone').value.trim()
     let blnError = false
     let strError = ''
+
     
-    if(validateEmail(strSignUpEmail) == true){
+    if(!validateEmail(strSignUpEmail) == true){
         blnError = true
-        strError += "Invalid Email. "
+        strError += '<p>You must enter a valid email.</p>'
     }
-    if(validatePassword(strSignUpPassword) == true){
+    if(!validatePassword(strSignUpPassword) == true){
         blnError = true
-        strError += "Invalid Password. "
+        strError += '<p>You must enter a valid Password.</p>'
     }
-    if(validateFirstName(strFirstName) == true){
+
+        if(strFirstName.length < 1){
         blnError = true
-        strError += "Invalid First Name. "
+        strError += '<p>You must enter a First Name.</p>'
     }
-   if(validateLastName(strLastName) == true){
+
+        if(strLastName.length < 1){
         blnError = true
-        strError += "Invalid Last Name. "
+        strError += '<p>You must enter a Last Name.</p>'
     }
-    if(validatePhone(strPhone) == true){
+
+    if(!validatePhone(strPhone) == true){
         blnError = true
-        strError += "Invalid Phone Number. "
+        strError += '<p>Invalid Phone Number.</p>'
     }
 
     if(blnError == true){
@@ -180,12 +198,23 @@ document.querySelector('#btnSignUp').addEventListener('click',function(){
         })
     }
     else{
+
+         let formData = new URLSearchParams(new FormData(document.querySelector('#signUpForm')));
+        const response = await fetch("/signup", { method: "POST", body: formData });
+        const data = await response.json();
+
+        if(data.error){
+            Swal.fire("Error", data.error, "error");
+            return;
+        }
+
         //Would Like to have a Welcome Pop up Happen Some How! 
         Swal.fire({
             title: "Welcome!",
             text: "Your account has been created.",
             icon: "success"
+        }).then(() => {
+        window.location.href = `./AnimalTable.html?userid=${data.userid}`;
         });
-        window.location.replace("animalhome.html");
     }
 })

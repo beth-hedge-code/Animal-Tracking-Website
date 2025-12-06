@@ -1,5 +1,11 @@
 document.addEventListener("DOMContentLoaded", () => {
     const animalID = new URLSearchParams(window.location.search).get("animalid"); //Searches the url to get the animalID
+    const userID = new URLSearchParams(window.location.search).get("userid"); // get userid
+
+    // Update Back to Animal Table link
+    const backLink = document.getElementById("backToAnimals");
+    if (backLink) backLink.href = `AnimalTable.html?userid=${userID}`;
+
 
     fetch(`http://localhost:8000/api/vet/${animalID}`)//grabs vet info based on animalid
         .then(res => {
@@ -33,4 +39,5 @@ document.addEventListener("DOMContentLoaded", () => {
         })
         .catch(err => console.error(err));
 });
+
 

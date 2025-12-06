@@ -12,7 +12,6 @@ index page
 animal table page
     add animal
     delete animal
-    make look better (similar to other webpages)
 
 General Checks
     Index Page 
@@ -27,19 +26,19 @@ General Checks
         > Login Card -
         > Signup Card - 
         > Duplicating Data -
-        > Change linked button (USER SPECFIC)-
+        > Change linked button (USER SPECFIC)- 
         > get form text too work(email needs to be ...) -
     
     Animal Table Page
         > lighthouse score? - 
         > Comment and clean up code - 
         > Can explain fully? -
-        > Looks clean? -
-        > Works with database? -
-        > Swal alerts working -
+        > Looks clean? - X
+        > Works with database? - X
+        > Swal alerts working - X
         > Bootstrap theme used? - X
         > Mobile/ Responsive? -
-        > Filter Button -
+        > Filter Button - 
         > Create Animal Button -
 
     Animal Fact Sheet (DONE!)
@@ -61,4 +60,5 @@ General Checks
         > Swal alerts working - X (NONE IN USE)
         > Bootstrap theme used? - X
         > Mobile/ Responsive? - X
+        > Add vet Visit -   extra
 

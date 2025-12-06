@@ -19,6 +19,19 @@ router.post("/signup", (req, res) => {
             txtTelephone, txtAddress, txtCity, txtState, txtZip, txtRole,
             locationID} = req.body;
 
+    db.get(`SELECT * FROM tblUsers WHERE email = ?`, [txtSignUpEmail], (err, row) => {
+        if (err) {
+            console.error(err.message);
+            return res.status(500).send("Server error");
+        }
+
+        if (row) {
+            // Email already exists
+            return res.status(400).json({ error: "Email already in use" });
+        }
+    });
+
+   
     db.run(`INSERT INTO tblUsers (email, password) VALUES (?, ?)`, [txtSignUpEmail, txtSignUpPassword], function (err) {
         if (err) {
             console.error(err.message);
@@ -27,6 +40,8 @@ router.post("/signup", (req, res) => {
             console.log(`A row has been inserted into tblusers with rowid ${this.lastID}`);
         }
     });
+
+    const newUserID = this.lastID; //userID from tblUsers for the link
     
     db.run(`INSERT INTO tblEmployee (fname, lname, role, phone, street, city, state, zipcode, locationID) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)`, [txtFirstName, txtLastName, txtRole, txtTelephone, txtAddress, txtCity, txtState, txtZip, locationID], function (err) {
         if (err) {
@@ -35,8 +50,8 @@ router.post("/signup", (req, res) => {
         } else {
             console.log(`A row has been inserted into tblemployees with rowid ${this.lastID}`);
         } 
+        return res.json({ userid: this.lastID });
     });
-    res.redirect('./animalhome.html') //Redirects to Animal Homepage
 });
 
 //Exports Router

@@ -19,7 +19,6 @@
                     <h1 style="font-size: 4vw;"  class="text-center text-white">Welcome To Canyon Crest Animal Tracker</h1>
                     <div class=" d-flex justify-content-center">
                         <button id="btnLoginSignup" type="button" class="btn btn-primary">Login/Sign Up</button>
-                        <a href="http://localhost:8000/factsheet.html?animalid=4">bob</a>
                     </div>
                 </div>
             </div>
@@ -37,7 +36,7 @@
                     <form id="loginForm" action="/login" method="post">
                         <div class="mb-3 text-start">
                             <label class="form-label" for="txtLoginEmail">Email</label>
-                            <input class="form-control" id="txtLoginEmail" name="txtLoginEmail" type="email" required>
+                            <input class="form-control" id="txtLoginEmail" name="txtLoginEmail" type="email" >
                             <div id="emailHelpBlock" class="form-text text-white">
                                 Your username must be a valid email address.
                             </div>
@@ -45,9 +44,9 @@
 
                         <div class="mb-3 text-start">
                             <label class="form-label" for="txtLoginPassword">Password</label>
-                            <input class="form-control" id="txtLoginPassword" name="txtLoginPassword" type="password" required minlength="6">
+                            <input class="form-control" id="txtLoginPassword" name="txtLoginPassword" type="password">
                             <div id="passwordHelpBlock" class="form-text text-white">
-                                Your password must be at least 6 characters long.
+                                Your password must be at least 6 characters long and have a symbol.
                             </div>
                         </div>
 
@@ -64,8 +63,9 @@
         <!--SIGNUP CARD BEGINS-->
         <!--GATHER MORE INFORMATION ON USER-->
         <!--CHECKS NEEDED-->
-            <div class="card col-6 position-absolute top-50 start-50 translate-middle d-none"  id="SignUpCard">
-                <div class="card-body bg-warning">
+        <div class="card shadow w-100 d-none" style="max-width: 650px;" id="SignUpCard">
+            <div class="card-body bg-danger rounded" style="max-height: 80vh; overflow-y: auto;">
+                <div class="bg-dark rounded p-4 text-center text-white">
                     <h2 class="text-center">Sign Up</h2>
                     <form id="signUpForm"  action="/signup" method="post">
                         <!--LOGIN CREDENTIALS-->
@@ -109,6 +109,7 @@
                     <button id="btnLoginRef" type="button" class="btn btn-link">Go back to Login!</button>
                 </div>
             </div>
+        </div>
     </div>
     
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>

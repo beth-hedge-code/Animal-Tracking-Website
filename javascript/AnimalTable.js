@@ -33,7 +33,7 @@ function loadAnimals(sortBy = null, sortDir = "asc") {
           <th scope="row">${animal.animalID}</th>
           <td>${animal.animalName}</td>
           <td>
-            <a href="factsheet.html?animalid=${animal.animalID}" class="btn btn-info btn-sm">Go To Facts</a>
+            <a href="factsheet.html?animalid=${animal.animalID}&userid=${userID}" class="btn btn-info btn-sm">Go To Facts</a>
           </td>
         `;
         tbody.appendChild(row);

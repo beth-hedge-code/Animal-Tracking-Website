@@ -23,7 +23,13 @@ document.addEventListener("DOMContentLoaded", () => {
 
             //creates the vetpage link attached the animalid 
             const vetLink = document.getElementById("vetPageLink");
-            vetLink.href = `vetpage.html?animalid=${animalID}`;
+            const userID = new URLSearchParams(window.location.search).get("userid");
+
+            const backToAnimals = document.getElementById("backToAnimals");
+            backToAnimals.href = `AnimalTable.html?userid=${userID}`;
+            
+            vetLink.href = `vetpage.html?animalid=${animalID}&userid=${userID}`;
+
         })
         .catch(err => console.error(err));
 });

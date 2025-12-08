@@ -51,14 +51,14 @@ General Checks
         > Bootstrap theme used? - X
         > Mobile/ Responsive? - X
 
-    Vet Page (DONE!)
-        > lighthouse score? - X
-        > Comment and clean up code -  X
-        > Can explain fully? - X
-        > Looks clean? - X
-        > Works with database? - X
-        > Swal alerts working - X (NONE IN USE)
-        > Bootstrap theme used? - X
-        > Mobile/ Responsive? - X
-        > Add vet Visit -   extra
+    Vet Page 
+        > lighthouse score? - 
+        > Comment and clean up code -  
+        > Can explain fully? - 
+        > Looks clean? - 
+        > Works with database? - 
+        > Swal alerts working - 
+        > Bootstrap theme used? - 
+        > Mobile/ Responsive? - 
+        > Add vet Visit -  
 

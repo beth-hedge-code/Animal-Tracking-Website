@@ -42,6 +42,56 @@ router.post("/api/animals", (req, res) => {
   });
 });
 
+// Delete an animal by ID
+router.delete("/api/animals/:id", (req, res) => {
+  const { id } = req.params;
+
+  const sql = "DELETE FROM tblAnimals WHERE animalID = ?";
+  db.run(sql, [id], function(err) {
+    if (err) {
+      console.error(err.message);
+      return res.status(500).json({ error: "Failed to delete animal" });
+    }
+
+    if (this.changes === 0) {
+      // No rows deleted, ID not found
+      return res.status(404).json({ error: `Animal with ID ${id} not found` });
+    }
+
+    res.json({ message: `Animal with ID ${id} deleted` });
+  });
+});
+
+
+// Update an animal by ID
+router.put("/api/animals/:id", (req, res) => {
+  const animalID = parseInt(req.params.id, 10); // ensure integer
+  const { animalName, animalSpecies, animalBreed, disposition, feed, locationID, userID } = req.body;
+
+  const sql = `
+    UPDATE tblAnimals
+    SET animalName = ?, animalSpecies = ?, animalBreed = ?, disposition = ?, feed = ?, locationID = ?
+    WHERE animalID = ? AND userID = ?
+  `;
+
+  db.run(
+    sql,
+    [animalName, animalSpecies, animalBreed, disposition, feed, locationID, animalID, userID],
+    function(err) {
+      if (err) {
+        console.error(err.message);
+        return res.status(500).json({ error: "Failed to update animal" });
+      }
+
+      if (this.changes === 0) {
+        return res.status(404).json({ error: `Animal with ID ${animalID} not found or does not belong to user ${userID}` });
+      }
+
+      res.json({ message: `Animal with ID ${animalID} updated` });
+    }
+  );
+});
+
 
 
 

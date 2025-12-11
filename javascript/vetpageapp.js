@@ -1,6 +1,12 @@
 document.addEventListener("DOMContentLoaded", () => {
     const animalID = new URLSearchParams(window.location.search).get("animalid"); //Searches the url to get the animalID
+    const userID = new URLSearchParams(window.location.search).get("userid"); // get userid from url
 
+    // Update Back to Animal Table link based on userid
+    const backLink = document.getElementById("backToAnimals");
+    if (backLink) backLink.href = `AnimalTable.html?userid=${userID}`;
+
+    
     fetch(`http://localhost:8000/api/vet/${animalID}`)//grabs vet info based on animalid
         .then(res => {
             if (!res.ok) throw new Error("Network response was not ok");

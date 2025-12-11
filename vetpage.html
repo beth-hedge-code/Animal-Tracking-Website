@@ -1,4 +1,4 @@
-<!--LightHouse Accessibility Score: 100-->
+<!--LightHouse Accessibility Score: 96-->
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -20,6 +20,7 @@
                 <h1 class="text-center text-white mb-4">Vet Records</h1>
 
                 <!--Using vetpageapp.js and vetroute.js we display data from the database-->
+                <!--We use the ids in vetpageapp.js-->
                 <div id="vetVisitsContainer" class="text-white" style="font-size: 20px;">
                     
                     <p><strong>Veterinarian: </strong><span id="vetName"></span></p>
@@ -34,9 +35,9 @@
                     <p><strong>Vaccinations Given Against: </strong><span id="vaccinations"></span></p>
                 </div>
                 
-                <!--Navigation back to login page (Should change to animal table home)-->
+                <!--Navigation back to login page (Should change to animal table home based on userID)-->
                 <div class="d-flex justify-content-center mt-4 gap-3">
-                    <a href="index.html" class="btn btn-light">Back to Menu</a>
+                    <a id="backToAnimals" class="btn btn-light">Back to Animal Table</a>
                 </div>
 
             </div>

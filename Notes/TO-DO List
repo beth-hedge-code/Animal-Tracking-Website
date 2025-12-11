@@ -1,18 +1,3 @@
-General
-    icon addition
-    Beth- Needs to document AI uses 
-    vet page and animalfact page buttons should change to actual home page not login page
-
-index page
-    scroll and sizing on signup card
-    fix all email and password checking
-    make sure all alerts and buttons work well
-    make sure it is alerting the user to put in all info correctly
-
-animal table page
-    add animal
-    delete animal
-
 General Checks
     Index Page 
         > lighthouse score? - 
@@ -35,7 +20,7 @@ General Checks
         > Can explain fully? -
         > Looks clean? - X
         > Works with database? - X
-        > Swal alerts working - X
+        > Swal alerts working - 
         > Bootstrap theme used? - X
         > Mobile/ Responsive? -
         > Filter Button - 
@@ -47,18 +32,16 @@ General Checks
         > Can explain fully? - X
         > Looks clean? - X
         > Works with database? - X
-        > Swal alerts working - X
         > Bootstrap theme used? - X
         > Mobile/ Responsive? - X
 
     Vet Page 
-        > lighthouse score? - 
-        > Comment and clean up code -  
-        > Can explain fully? - 
-        > Looks clean? - 
-        > Works with database? - 
-        > Swal alerts working - 
-        > Bootstrap theme used? - 
-        > Mobile/ Responsive? - 
-        > Add vet Visit -  
+        > lighthouse score? - X
+        > Comment and clean up code -  X
+        > Can explain fully? - X
+        > Looks clean? - X
+        > Works with database? - X
+        > Bootstrap theme used? - X
+        > Mobile/ Responsive? - X
+
 

@@ -394,3 +394,80 @@ If you'd like
 Which would you like next?
 
 Made changes.
+
+
+Beth: I used AI to help me understand and create the backend. There was alot of trial and error and this was my first time really making a backend
+that works with a front end. Because of that I have just created a simplfied list of the prompts I used. 
+        ✅ Your Prompts (Concise List)
+
+        // So here on, for context, we had already started working on the front end and I just wanted to have a basic idea of how the db-> jS -> nodejs -> html looked
+        // I had it use the tree db from class and had it create a very basic website for that. Just so I had an Idea on how it worked. 
+        // I worked on seperate chats so for future case if you see any prompts using TreeDB know that was my testing/learning website. (Would use what I learned for this project so its included!)
+
+         > Fix SQLite error: SQLITE_ERROR: no such table: tbltree.
+         > Review and correct Express/SQLite server code for /tbltrees/:id.
+         > Create a test SQLite database (trees.db) with table tbltrees and sample records.
+         > Delete existing database and rebuild the table to match the schema.
+         > Update HTML fetch() request to match Express route and test output.
+         > Modify HTML page to display fetched tree data directly on the webpage.
+         > Create SQL table tblanimalLocation with fields for ranch locations.
+         > Create three ranch-themed sample locations:
+         > Produce SQL insert script for populating tblanimalLocation with ranch-themed data.
+         > Provide guidance and scripts for front-end integration of ranch and tree data.
+         ///////
+
+         > Provided full SQL schema with multiple CREATE TABLE statements for: tblUsers tblEmployee tblVet tblAnimals
+          tblanimalLocation tblAnimalBirth tblAnimalDes tblVetVisit tblVetVaccination tblVetVisitdesc
+         > Provided multiple ALTER TABLE foreign key statements.
+         > Requested: “Make this available for me to run on SQLite.”
+         > Asked: “Can I make multiple Node.js files or must it all be index.js?”
+         //This lead me to watch a yt video on routing and the route folder! 
+
+         > How to keep a custom CSS background image when using a Bootstrap theme.
+         > Where to add the !important override in CSS.
+         > Why the background image still doesn't show.
+         > Provided your CSS + HTML and asked why it still fails.
+         > Confirmed updated HTML and asked for next steps.
+         > Asked if you can display SQLite database info (like an animal ID) on an HTML page using Node.js.
+         > Reported error: require is not defined.
+         > Reported error: 404 Not Found, Unexpected token '<'.
+         > Provided your server + HTML code and asked what was wrong.
+         > Reported error: Cannot find module 'express'.
+         > Reported CORS error when fetching data from Node.js backend.
+         > Reported 500 error from /tbltree/1 API route.
+         > Clarified that SQLite column name is TreeID.
+
+         > “I’m trying to connect an element from my HTML form to a SQLite database using JavaScript and Node.js. Here is my insert code and here is the HTML. How can I get #txtLoginEmail to submit into my database?”
+         > “What’s the point of e.preventDefault()?”
+         > “What is async(e)?”
+         > “Replace the above to include a password and a way to count up one for userid and employeeid.”
+         > “What if the userid is a VARCHAR(50)?” //This caused a rewrite to make it an auto increment int
+
+         > Convert MySQL table definitions to SQLite-compatible versions. //Used dbdiagram to create a ERD
+         > Create 10 sample animals and populate animal-related tables.
+         > Drop existing tables and rebuild them with SQLite auto-increment IDs.
+         > Convert all insert statements to SQLite format.
+         > Replace all animal location data with the following three ranches:
+          - ('RANCH001','Lone Oak Ranch','contact@loneoakranch.com','555-210-3344','1840 Prairie Creek Rd','Amarillo','TX','79101')
+          - ('RANCH002','Silver Spur Animal Range','info@silverspurrange.com','555-422-8899','752 Silver Spur Trail','Cheyenne','WY','82001')
+          - ('RANCH003','Golden Horseshoe Ranch','hello@goldenhorseshoe.com','555-899-4432','99 Horseshoe Loop','Billings','MT','59101')
+         > Generate sample data for veterinary tables: tblVet, tblVetVisit, tblVetVaccination, tblVetVisitDesc.
+         > Make all SQL insert scripts easy to copy and paste.
+
+         > “Cannot POST /submit”
+         > “If I wanted the login page to go to a home page based on the userid how would I do that with Node.js? No authentication please.”
+         > “Can I get a link to test it on with port 8000 and animal id 4?”
+         > “Error: Cannot find module './Routes/animalfacts'”
+         > “Failed to load resource 500… Unexpected token ‘<’…”
+         > “How would I put the image next to the description?” 
+         > “Correction: can I only have the description, species, and breed next to image and all other info below it?”
+         > “Here is the button I use, but it errors — can you fix?”
+         > “It worked! Can you put Feed, Location, Birth Weight next to the rest in HTML?”
+         > “Animal name didn’t pop up — here’s my script”
+         > “Can you make something similar for a vet page? Tables tblVet, tblVetVaccination, tblVetVisit, tblVetVisitDesc… make route + app if needed”
+         > “Rewrite vetpageapp like my animalfactapp script”
+         > “Make the Vet Page button work for whatever animal ID was used”
+         > “Can you make an .md for this project?”
+         > “Great work! But on mobile my background image changes — here is my CSS”
+         > “when i scroll on mobile my background image changes here is my css”
+         > “Uncaught SyntaxError: Unexpected token '<'… Understand this error”

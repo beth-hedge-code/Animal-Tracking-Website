@@ -21,13 +21,12 @@ document.addEventListener("DOMContentLoaded", () => {
             document.getElementById("location").textContent = data.locationName;
             document.getElementById("birthWeight").textContent = data.birthWeight;
 
-            //creates the vetpage link attached the animalid 
+            //creates the links based on IDs
             const vetLink = document.getElementById("vetPageLink");
             const userID = new URLSearchParams(window.location.search).get("userid");
-
             const backToAnimals = document.getElementById("backToAnimals");
+
             backToAnimals.href = `AnimalTable.html?userid=${userID}`;
-            
             vetLink.href = `vetpage.html?animalid=${animalID}&userid=${userID}`;
 
         })

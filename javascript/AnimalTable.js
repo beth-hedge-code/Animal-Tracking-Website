@@ -20,6 +20,7 @@ document.addEventListener("DOMContentLoaded", () => {
   btnNew.setAttribute("aria-label", "Add a new animal");
   btnNew.addEventListener("click", () => {
     Swal.fire({
+      //sweet alert that shows the information needed to add a new animal
       title: "Add New Animal",
       html: `
         <input id="animalName" class="swal2-input" placeholder="Name" aria-label="Animal Name">
@@ -38,6 +39,7 @@ document.addEventListener("DOMContentLoaded", () => {
       showCancelButton: true,
       confirmButtonText: "Save",
       preConfirm: () => {
+        //obtains the data filled in the input elements above
         const locationName = document.getElementById("locationID").value;
         return {
           animalName: document.getElementById("animalName").value.trim(),
@@ -52,21 +54,24 @@ document.addEventListener("DOMContentLoaded", () => {
     }).then(result => {
       if (result.isConfirmed) {
         const data = result.value;
+        //error to reqire data in name and location
         if (!data.animalName || !data.locationID) {
           Swal.fire("Error", "Name and Location are required.", "error");
           return;
         }
-
+        //calls for POST in animaltableroute.js
         fetch("/api/animals", {
           method: "POST",
           headers: { "Content-Type": "application/json" },
           body: JSON.stringify(data)
         })
         .then(res => res.json())
+        //success
         .then(() => {
           Swal.fire("Saved!", "New animal added.", "success");
           loadAnimals();
         })
+        //console and sweet alert error if unable to add the animal
         .catch(err => {
           console.error("Error adding animal:", err);
           Swal.fire("Error", "Could not add animal", "error");
@@ -82,12 +87,14 @@ document.addEventListener("DOMContentLoaded", () => {
   btnDelete.setAttribute("aria-label", "Delete an existing animal");
   btnDelete.addEventListener("click", () => {
     Swal.fire({
+      //sweet alert that shows the information needed to delete an animal
       title: "Delete Animal",
       html: `<input id="animalID" class="swal2-input" placeholder="Enter Animal ID" aria-label="Animal ID">`,
       focusConfirm: false,
       showCancelButton: true,
       confirmButtonText: "Delete",
       preConfirm: () => {
+        //obtains the data filled in the input element above
         const id = parseInt(document.getElementById("animalID").value.trim(), 10);
         if (!id) Swal.showValidationMessage("Animal ID is required");
         return { animalID: id };
@@ -95,16 +102,19 @@ document.addEventListener("DOMContentLoaded", () => {
     }).then(result => {
       if (result.isConfirmed) {
         const { animalID } = result.value;
-
+        //calls for DELETE in animaltableroute.js
         fetch(`/api/animals/${animalID}`, { method: "DELETE" })
+        //error
           .then(res => {
             if (!res.ok) throw new Error("Failed to delete animal");
             return res.json();
           })
+        //success
           .then(() => {
             Swal.fire("Deleted!", `Animal with ID ${animalID} has been deleted.`, "success");
             loadAnimals();
           })
+        //console and sweet alerterror if unable to delete the animal
           .catch(err => {
             console.error("Error deleting animal:", err);
             Swal.fire("Error", "Could not delete animal", "error");
@@ -120,6 +130,7 @@ document.addEventListener("DOMContentLoaded", () => {
   btnUpdate.setAttribute("aria-label", "Update an existing animal");
   btnUpdate.addEventListener("click", () => {
     Swal.fire({
+      //sweet alert that shows the information needed to update a animal
       title: "Update Animal",
       html: `
         <input id="animalID" class="swal2-input" placeholder="Enter Animal ID" aria-label="Animal ID">
@@ -139,6 +150,7 @@ document.addEventListener("DOMContentLoaded", () => {
       showCancelButton: true,
       confirmButtonText: "Update",
       preConfirm: () => {
+        //obtains the data filled in the input elements above
         const id = parseInt(document.getElementById("animalID").value.trim(), 10);
         const locationName = document.getElementById("locationID").value;
         if (!id) Swal.showValidationMessage("Animal ID is required");
@@ -156,19 +168,23 @@ document.addEventListener("DOMContentLoaded", () => {
     }).then(result => {
       if (result.isConfirmed) {
         const data = result.value;
+        //calls for PUT in animaltableroute.js
         fetch(`/api/animals/${data.animalID}`, {
           method: "PUT",
           headers: { "Content-Type": "application/json" },
           body: JSON.stringify(data)
         })
+        //error
         .then(res => {
           if (!res.ok) throw new Error("Failed to update animal");
           return res.json();
         })
+        //success
         .then(() => {
           Swal.fire("Updated!", `Animal with ID ${data.animalID} has been updated.`, "success");
           loadAnimals();
         })
+        //console and sweet alerterror if unable to update the animal
         .catch(err => {
           console.error("Error updating animal:", err);
           Swal.fire("Error", "Could not update animal", "error");
@@ -188,7 +204,7 @@ function loadAnimals(sortBy = null, sortDir = "asc") {
     .then(res => res.json())
     .then(data => {
       tbody.innerHTML = "";
-
+      //sorts animals by name in ascending order
       if (sortBy) {
         data.sort((a, b) => {
           let valA = a[sortBy];
@@ -200,7 +216,7 @@ function loadAnimals(sortBy = null, sortDir = "asc") {
           return 0;
         });
       }
-
+      //create html elements that fill in table data for animals
       data.forEach(animal => {
         const row = document.createElement("tr");
         row.innerHTML = `
@@ -213,6 +229,7 @@ function loadAnimals(sortBy = null, sortDir = "asc") {
         tbody.appendChild(row);
       });
     })
+    //error if animals cannot be loaded
     .catch(err => {
       console.error("Error loading animals:", err);
       Swal.fire("Error", "Could not load animal data", "error");

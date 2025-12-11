@@ -1,157 +1,71 @@
-(This read me is a work in progress)
-# Animal Tracking Website
+Test User 1 =
+    email = testrancher@gmail.com
+    password = Password1
 
-A Node.js + Express web application for tracking animal information, veterinary visits, and animal descriptions. The application uses SQLite databases to store animals, vets, and visit data, and displays them in a responsive front-end using HTML, CSS, and Bootstrap.
+ Canyon Crest Animal Tracker
 
----
+Canyon Crest Animal Tracker is a ranch-themed web application designed to help ranch users manage and track their animals. The app provides a clean, intuitive interface for viewing, adding, updating, and deleting animals, as well as tracking recent veterinary visits and learning interesting facts about each animal.
 
-## Table of Contents
+🌾 Features
 
-- [Features](#features)
-- [Technologies](#technologies)
-- [Project Structure](#project-structure)
-- [Database Schema](#database-schema)
-- [Setup Instructions](#setup-instructions)
-- [Running the Application](#running-the-application)
-- [Usage](#usage)
-- [Screenshots](#screenshots)
+Animal Management
 
----
+Add new animals to the database
 
-## Features
+Update existing animal records
 
-- View animal descriptions with species, breed, DOB, sire, dam, feed, location, and birth weight.
-- View vet visit details for each animal, including visit date, vet name, weight, and vaccinations.
-- Responsive layout using Bootstrap.
-- Dynamic linking between fact sheets and vet pages.
+Delete animals when no longer needed
 
----
+View detailed facts about each animal
 
-## Technologies
+Review recent veterinary visits
 
-- Node.js
-- Express.js
-- SQLite3
-- HTML, CSS, Bootstrap
-- JavaScript (Vanilla)
+User Accounts
 
----
+Sign up and log in to see user-specific animals
 
-## Project Structure
+⚠️ Note: No authentication or password protection implemented
 
-Animal-Tracking-Website/
-├── index.js # Main server file
-├── package.json
-├── Routes/
-│ ├── login.js
-│ ├── signin.js
-│ └── animalfact.js # API routes for animal descriptions
-│ └── vetpage.js # API routes for vet page
-├── CSS/
-│ ├── stylesheetindex.css
-│ └── Bootstrap.css
-├── javascript/
-│ ├── animalfactapp.js
-│ └── vetpageapp.js
-├── factsheet.html # Animal fact sheet page
-├── vetpage.html # Vet visit page
-├── Animals.db # SQLite database for animals
-├── README.md
+Rustic, ranch-inspired UI design
 
+Mobile-friendly layout for tablets and phones
 
----
+🛠 Technologies Used
 
-## Database Schema
+Frontend: HTML, CSS (Bootstrap), JavaScript
 
-### `tblAnimals`
-| Column | Type |
-|--------|------|
-| animalID | INTEGER PRIMARY KEY |
-| animalName | TEXT |
-| animalSpecies | TEXT |
-| animalBreed | TEXT |
-| disposition | TEXT |
-| feed | TEXT |
-| userID | INTEGER |
-| locationID | INTEGER |
+Backend: Node.js / Express 
 
-### `tblAnimalBirth`
-| Column | Type |
-|--------|------|
-| animalBirthID | INTEGER PRIMARY KEY |
-| animalID | INTEGER |
-| DOB | TEXT |
-| Sire | TEXT |
-| Dam | TEXT |
-| birthWeight | TEXT |
+Database: SQLite
 
-### `tblAnimalDes`
-| Column | Type |
-|--------|------|
-| animalDesID | INTEGER PRIMARY KEY |
-| animalID | INTEGER |
-| description | TEXT |
+Alerts & Notifications: SweetAlert2
 
-### `tblVet`
-| Column | Type |
-|--------|------|
-| VetID | INTEGER PRIMARY KEY |
-| name | TEXT |
-| role | TEXT |
-| phone | TEXT |
-| address | TEXT |
-| city | TEXT |
-| state | TEXT |
-| zip_code | TEXT |
-| license | TEXT |
+💻 Screenshots
 
-### `tblVetVisit`
-| Column | Type |
-|--------|------|
-| vetVisitID | INTEGER PRIMARY KEY |
-| animalID | INTEGER |
-| employeeID | INTEGER |
-| vetID | INTEGER |
-| locationID | INTEGER |
-| visitDate | TEXT |
-| weight | TEXT |
+Replace the links below with actual screenshots of your app
 
-### `tblVetVisitDesc`
-| Column | Type |
-|--------|------|
-| vetVisitDescID | INTEGER PRIMARY KEY |
-| description | TEXT |
+Welcome / Login Page
+![Welcome Page](imgs/WelcomePage.png)
+![Login Page](imgs/LoginPage.png)
 
-### `tblVetVaccination`
-| Column | Type |
-|--------|------|
-| VaccinationID | INTEGER PRIMARY KEY |
-| vetVisitID | INTEGER |
-| name | TEXT |
+Animal Table:
+![Animal Table](imgs/AnimalTable.png)
 
----
+Add Animal Form:
+![Add Animal Button](imgs/AddAnimalButton.png)
 
-## Setup Instructions
+Fact Page:
+![Animal Facts](imgs/Factpage.png)
 
-1. Clone the repository:
-
-bash
-git clone https://github.com/yourusername/Animal-Tracking-Website.git
-cd Animal-Tracking-Website
-
-npm install
-
-Running the Application
-
-Start the server:
-
-node index.js
+Mobile Responsiveness:
+![Mobile Responsiveness](imgs/MobileResponsiveness.png)
 
 
-Server runs on port 8000. Open in your browser:
 
-http://localhost:8000
+⚠️ Notes
 
-#future screenshots coming!
+All data is stored in a local SQLite database.
 
-Created with ❤️ by [Beth and Miguel]
+User accounts are tracked per session for demo purposes; there is no authentication.
+
+Designed for ranch staff or enthusiasts to quickly manage animal data.

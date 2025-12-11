@@ -6,7 +6,7 @@ body, html {
 }
 
 .bg {
-  background-image: url("../imgs/PhotoFunia-1763751617.jpg") !important;
+  background-image: url("../imgs/backgroundimg.jpg") !important;
   background-attachment: fixed;  /* keeps background still */
   background-position: center;
   background-repeat: no-repeat;

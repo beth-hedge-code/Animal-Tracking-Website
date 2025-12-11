@@ -1,122 +1,101 @@
 //***Regular Expressions***
-const regEmail = /[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?/
-const regPhone = /^([+]?\d{1,2}[-\s]?|)\d{3}[-\s]?\d{3}[-\s]?\d{4}$/
-const regPassword = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[a-zA-Z]).{8,}$/
+const regEmail = /[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?/;
+const regPhone = /^([+]?\d{1,2}[-\s]?|)\d{3}[-\s]?\d{3}[-\s]?\d{4}$/;
+const regPassword = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[a-zA-Z]).{8,}$/;
 
-//Functions for input validation
-function validateEmail(strSignUpEmail){
-    if(!regEmail.test(strSignUpEmail)){
-        document.querySelector('#emailHelpBlock').classList.remove('text-success')
-        document.querySelector('#emailHelpBlock').classList.add('text-danger')
-        return false   
-    }
-    else{
-        document.querySelector('#emailHelpBlock').classList.remove('text-danger')
-        document.querySelector('#emailHelpBlock').classList.add('text-success')
-    }
-    return true
-}
-function validateEmail(strLoginEmail){
-    if(!regEmail.test(strLoginEmail)){
-        document.querySelector('#emailHelpBlock').classList.remove('text-success')
-        document.querySelector('#emailHelpBlock').classList.add('text-danger')
-        return false   
-    }
-    else{
-        document.querySelector('#emailHelpBlock').classList.remove('text-danger')
-        document.querySelector('#emailHelpBlock').classList.add('text-success')
-    }
-    return true
-
-}
-function validateFirstName(strFirstName){
-    if(strFirstName < 1){
-        return true
-    }
-    else{
-        return false
-    }
-}
-function validateLastName(strFirstName){
-    if(strFirstName < 1){
-        return true
-    }
-    else{
-        return false
-    }
-}
-
- function validatePhone(strPhone){
-    if(!regPhone.test(strPhone)){
-        document.querySelector('#phoneHelpBlock').classList.remove('text-success')
-        document.querySelector('#phoneHelpBlock').classList.add('text-danger')
-        return false
+//================== VALIDATION FUNCTIONS ==================//
+function toggleHelpBlock(helpBlock, valid){
+    if(valid){
+        helpBlock.classList.remove('text-danger', 'text-white');
+        helpBlock.classList.add('text-success');
     } else {
-        document.querySelector('#phoneHelpBlock').classList.remove('text-danger')
-        document.querySelector('#phoneHelpBlock').classList.add('text-success')
+        helpBlock.classList.remove('text-success', 'text-white');
+        helpBlock.classList.add('text-danger');
     }
-    return true    
 }
 
-function validatePassword(strLoginPassword){
-    if(!regPassword.test(strLoginPassword)){
-        document.querySelector('#passwordHelpBlock').classList.remove('text-success')
-        document.querySelector('#passwordHelpBlock').classList.add('text-danger')
-        return false
+function validateEmail(email, helpBlockId){
+    const helpBlock = document.querySelector(helpBlockId);
+    const valid = regEmail.test(email);
+    toggleHelpBlock(helpBlock, valid);
+    return valid;
+}
+
+function validatePassword(password, helpBlockId){
+    const helpBlock = document.querySelector(helpBlockId);
+    const valid = regPassword.test(password);
+    toggleHelpBlock(helpBlock, valid);
+    return valid;
+}
+
+function validateName(name){
+    return name.length > 0;
+}
+
+function validatePhone(phone){
+    const helpBlock = document.querySelector('#phoneHelpBlock');
+    const valid = regPhone.test(phone);
+    toggleHelpBlock(helpBlock, valid);
+    return valid;
+}
+
+//================== EVENT LISTENERS ==================//
+
+// Switch cards
+document.querySelector('#btnLoginSignup').addEventListener('click', () => {
+    document.querySelector('#LoginCard').classList.remove('d-none');
+    document.querySelector('#WelcomeCard').classList.add('d-none');
+});
+document.querySelector('#btnSignUpRef').addEventListener('click', () => {
+    document.querySelector('#SignUpCard').classList.remove('d-none');
+    document.querySelector('#LoginCard').classList.add('d-none');
+});
+document.querySelector('#btnLoginRef').addEventListener('click', () => {
+    document.querySelector('#LoginCard').classList.remove('d-none');
+    document.querySelector('#SignUpCard').classList.add('d-none');
+});
+
+// Real-time validation for login inputs
+document.querySelector('#txtLoginEmail').addEventListener('input', e => validateEmail(e.target.value, '#emailHelpBlock'));
+document.querySelector('#txtLoginPassword').addEventListener('input', e => validatePassword(e.target.value, '#passwordHelpBlock'));
+
+// Real-time validation for sign-up inputs
+document.querySelector('#txtSignUpEmail').addEventListener('input', e => validateEmail(e.target.value, '#emailHelpBlock'));
+document.querySelector('#txtSignUpPassword').addEventListener('input', e => validatePassword(e.target.value, '#passwordHelpBlock'));
+document.querySelector('#txtFirstName').addEventListener('input', e => {
+    if(!validateName(e.target.value)){
+        document.querySelector('#txtFirstName').classList.add('is-invalid');
     } else {
-        document.querySelector('#passwordHelpBlock').classList.remove('text-danger')
-        document.querySelector('#passwordHelpBlock').classList.add('text-success')
+        document.querySelector('#txtFirstName').classList.remove('is-invalid');
     }
-    return true
-}
-function validatePassword(strSignUpPassword){
-    if(!regPassword.test(strSignUpPassword)){
-        document.querySelector('#passwordHelpBlock').classList.remove('text-success')
-        document.querySelector('#passwordHelpBlock').classList.add('text-danger')
-        return false
+});
+document.querySelector('#txtLastName').addEventListener('input', e => {
+    if(!validateName(e.target.value)){
+        document.querySelector('#txtLastName').classList.add('is-invalid');
     } else {
-        document.querySelector('#passwordHelpBlock').classList.remove('text-danger')
-        document.querySelector('#passwordHelpBlock').classList.add('text-success')
+        document.querySelector('#txtLastName').classList.remove('is-invalid');
     }
-    return true
-}
+});
+document.querySelector('#txtTelephone').addEventListener('input', e => validatePhone(e.target.value));
 
-//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-
-// Button event listeners to switch cards
-document.querySelector('#btnLoginSignup').addEventListener('click',function(){
-    document.querySelector('#LoginCard').classList.remove('d-none')
-    document.querySelector('#WelcomeCard').classList.add('d-none')
-})
-document.querySelector('#btnSignUpRef').addEventListener('click',function(){
-    document.querySelector('#SignUpCard').classList.remove('d-none')
-    document.querySelector('#LoginCard').classList.add('d-none')
-})
-document.querySelector('#btnLoginRef').addEventListener('click',function(){
-    document.querySelector('#LoginCard').classList.remove('d-none')
-    document.querySelector('#SignUpCard').classList.add('d-none')
-})
-
-//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-
-//LOGIN
+//================== LOGIN ==================//
 document.querySelector('#btnLogin').addEventListener('click', async function(e){
     e.preventDefault();
-
+    //  checks data in input elements
     let email = document.querySelector('#txtLoginEmail').value.trim();
     let password = document.querySelector('#txtLoginPassword').value.trim();
     let blnError = false;
     let strError = '';
-
-    if(!validateEmail(email)){
+    //errors for invalid emal or password
+    if(!validateEmail(email, '#emailHelpBlock')){
         blnError = true;
         strError += '<p>You must enter a valid email.</p>';
     }
-    if(!validatePassword(password)){
+    if(!validatePassword(password, '#passwordHelpBlock')){
         blnError = true;
         strError += '<p>You must enter a valid Password.</p>';
     }
-
+    //throws up a error via sweet alerts that tells user to check thier work
     if(blnError){
         Swal.fire({
             title:'Oh no! Please check your work',
@@ -130,14 +109,11 @@ document.querySelector('#btnLogin').addEventListener('click', async function(e){
     const response = await fetch("/login", {
         method: "POST",
         headers: { "Content-Type": "application/x-www-form-urlencoded" },
-        body: new URLSearchParams({
-            txtLoginEmail: email,
-            txtLoginPassword: password
-        })
+        body: new URLSearchParams({ txtLoginEmail: email, txtLoginPassword: password })
     });
 
     const data = await response.json();
-
+    //throws up a error via sweet alerts that tells user thier login failed
     if(data.error){
         Swal.fire({
             title:"Login Failed",
@@ -150,71 +126,49 @@ document.querySelector('#btnLogin').addEventListener('click', async function(e){
     window.location.href = `./AnimalTable.html?userid=${data.userid}`;
 });
 
-
-
-////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-//Sign UP
-document.querySelector('#btnSignUp').addEventListener('click',async function(e){
+//================== SIGN-UP ==================//
+document.querySelector('#btnSignUp').addEventListener('click', async function(e){
     e.preventDefault();
-    let strSignUpEmail = document.querySelector('#txtSignUpEmail').value.trim()
-    let strFirstName = document.querySelector('#txtFirstName').value.trim()
-    let strLastName = document.querySelector('#txtLastName').value.trim()
-    let strSignUpPassword = document.querySelector('#txtSignUpPassword').value.trim()
-    let strPhone = document.querySelector('#txtTelephone').value.trim()
-    let blnError = false
-    let strError = ''
+    //finds the data for signing up via elements
+    let email = document.querySelector('#txtSignUpEmail').value.trim();
+    let password = document.querySelector('#txtSignUpPassword').value.trim();
+    let firstName = document.querySelector('#txtFirstName').value.trim();
+    let lastName = document.querySelector('#txtLastName').value.trim();
+    let phone = document.querySelector('#txtTelephone').value.trim();
 
-    
-    if(!validateEmail(strSignUpEmail) == true){
-        blnError = true
-        strError += '<p>You must enter a valid email.</p>'
-    }
-    if(!validatePassword(strSignUpPassword) == true){
-        blnError = true
-        strError += '<p>You must enter a valid Password.</p>'
-    }
-
-        if(strFirstName.length < 1){
-        blnError = true
-        strError += '<p>You must enter a First Name.</p>'
-    }
-
-        if(strLastName.length < 1){
-        blnError = true
-        strError += '<p>You must enter a Last Name.</p>'
-    }
-
-    if(!validatePhone(strPhone) == true){
-        blnError = true
-        strError += '<p>Invalid Phone Number.</p>'
-    }
-
-    if(blnError == true){
+    let blnError = false;
+    let strError = '';
+    //errors for invalid elements
+    if(!validateEmail(email, '#emailHelpBlock')){ blnError = true; strError += '<p>Invalid email.</p>'; }
+    if(!validatePassword(password, '#passwordHelpBlock')){ blnError = true; strError += '<p>Invalid password.</p>'; }
+    if(!validateName(firstName)){ blnError = true; strError += '<p>First name required.</p>'; }
+    if(!validateName(lastName)){ blnError = true; strError += '<p>Last name required.</p>'; }
+    if(!validatePhone(phone)){ blnError = true; strError += '<p>Invalid phone number.</p>'; }
+    //throws error via sweet alert
+    if(blnError){
         Swal.fire({
             title:'Oh no! Please check your work',
             html:strError,
             icon:'error',
-            confirmButtonColor: '#d88a0cff' 
-        })
-    }
-    else{
-
-         let formData = new URLSearchParams(new FormData(document.querySelector('#signUpForm')));
-        const response = await fetch("/signup", { method: "POST", body: formData });
-        const data = await response.json();
-
-        if(data.error){
-            Swal.fire("Error", data.error, "error");
-            return;
-        }
-
-        //Would Like to have a Welcome Pop up Happen Some How! 
-        Swal.fire({
-            title: "Welcome!",
-            text: "Your account has been created.",
-            icon: "success"
-        }).then(() => {
-        window.location.href = `./AnimalTable.html?userid=${data.userid}`;
+            confirmButtonColor: '#d88a0cff'
         });
+        return;
     }
-})
+
+    let formData = new URLSearchParams(new FormData(document.querySelector('#signUpForm')));
+    const response = await fetch("/signup", { method: "POST", body: formData });
+    const data = await response.json();
+    //error response
+    if(data.error){
+        Swal.fire("Error", data.error, "error");
+        return;
+    }
+    //success
+    Swal.fire({
+        title: "Welcome!",
+        text: "Your account has been created.",
+        icon: "success"
+    }).then(() => {
+        window.location.href = `./AnimalTable.html?userid=${data.userid}`;
+    });
+});

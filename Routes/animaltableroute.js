@@ -1,3 +1,4 @@
+// This page shows off the route side of CRUD
 const express = require("express");
 const sqlite3 = require("sqlite3").verbose();
 const router = express.Router();
@@ -7,7 +8,7 @@ router.use(express.urlencoded({ extended: true }));
 
 const db = new sqlite3.Database("./Animals.db");
 
-//get (read in CRUD) specafic data form tblanimals
+// READS animals linking to userID
 router.get("/api/animals", (req, res) => {
   const { userid } = req.query;
   const sql = "SELECT * FROM tblAnimals WHERE userID = ?";
@@ -17,16 +18,18 @@ router.get("/api/animals", (req, res) => {
   });
 });
 
-
+// CREATES a new animal and stores it in the database
 router.post("/api/animals", (req, res) => {
   const { animalName, animalSpecies, animalBreed, disposition, feed, locationID, userID } = req.body;
 
-  // Get the last animalID
+  // Gets the last animalID
   db.get("SELECT MAX(animalID) as lastID FROM tblAnimals", [], (err, row) => {
     if (err) return res.status(500).json({ error: "Database error" });
 
+    //Adding 1 to the Max animal ID makes all IDs Unique
     let newID = (row.lastID || 0) + 1; // If table empty, start at 1
 
+    //Inserts new information into the database
     const sql = `
       INSERT INTO tblAnimals 
       (animalID, animalName, animalSpecies, animalBreed, disposition, feed, locationID, userID)
@@ -42,7 +45,7 @@ router.post("/api/animals", (req, res) => {
   });
 });
 
-// Delete an animal by ID
+// DELETES an animal by ID
 router.delete("/api/animals/:id", (req, res) => {
   const { id } = req.params;
 
@@ -63,7 +66,7 @@ router.delete("/api/animals/:id", (req, res) => {
 });
 
 
-// Update an animal by ID
+// UPDATES an animal by ID
 router.put("/api/animals/:id", (req, res) => {
   const animalID = parseInt(req.params.id, 10); // ensure integer
   const { animalName, animalSpecies, animalBreed, disposition, feed, locationID, userID } = req.body;

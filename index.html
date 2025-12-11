@@ -1,3 +1,4 @@
+<!--LightHouse Accessibility Score: 91-->
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -19,7 +20,7 @@
                     <h1 style="font-size: 4vw;"  class="text-center text-white">Welcome To Canyon Crest Animal Tracker</h1>
                     <!--This button displays the login card-->
                     <div class=" d-flex justify-content-center">
-                        <button id="btnLoginSignup" type="button" class="btn btn-primary">Login/Sign Up</button>
+                        <button id="btnLoginSignup" type="button" class="btn btn-primary"  aria-label="Goes to the Login page">Login/Sign Up</button>
                     </div>
                 </div>
             </div>
@@ -53,11 +54,11 @@
                             </div>
                         </div>
 
-                        <button id="btnLogin" type="submit" class="btn btn-light w-100 mb-3">Login</button>
+                        <button id="btnLogin" type="submit" class="btn btn-light w-100 mb-3"  aria-label="Logs in the user">Login</button>
                     </form>
 
                     <!--Displays SignUp Card-->
-                    <button id="btnSignUpRef" type="button" class="btn btn-link text-white">New? Register Here!</button>
+                    <button id="btnSignUpRef" type="button" class="btn btn-link text-white"  aria-label="Goes to the Register page">New? Register Here!</button>
                 </div>
             </div>
         </div>
@@ -69,12 +70,14 @@
             <div class="card-body bg-danger rounded" style="max-height: 80vh; overflow-y: auto;">
                 <div class="bg-dark rounded p-4 text-center text-white">
                     <h2 class="text-center">Sign Up</h2>
-                    <form id="signUpForm"  action="/signup" method="post">
+
+                    <form id="signUpForm"  action="/signup" method="post"> <!--Signin.js refrences this form-->
                         <!--LOGIN CREDENTIALS-->
                         <label class="form-label" for="txtSignUpEmail">Email</label>
                         <input class="form-control" id="txtSignUpEmail" name="txtSignUpEmail" type="email">
                         <label class="form-label" for="txtSignUpPassword">Password</label>
                         <input class="form-control" id="txtSignUpPassword" name="txtSignUpPassword" type="password">
+
                         <!--NAME AND PHONE-->
                         <label class="form-label" for="txtFirstName">First Name</label>
                         <input class="form-control" id="txtFirstName" name="txtFirstName" type="text">
@@ -87,6 +90,7 @@
                         <div id="phoneHelpBlock" class="form-text">
                             Your phone number should be in the format of: (931) 123-4567.
                         </div>
+
                         <!-- PHYSICAL ADDRESS-->
                         <label class="form-label" for="txtAddress">Address</label>
                         <input class="form-control" id="txtAddress" name="txtAddress" type="text">
@@ -97,6 +101,7 @@
                         <label class="form-label" for="txtZip">Zip</label>
                         <input class="form-control" id="txtZip" name="txtZip" type="text">
                         <br>
+
                         <!--EMPLOYED AT?-->
                         <select class="form-select" name="locationID" aria-label="Default select example">
                             <option selected>Employed at?</option>
@@ -104,13 +109,13 @@
                             <option value="Silver Spur Animal Range">Silver Spur Animal Range</option>
                             <option value="Golden Horseshoe Ranch">Golden Horseshoe Ranch</option>
                         </select>
+                        <br>
                         
-                        <button id="btnSignUp" type="submit" class="btn btn-light">SignUp</button>
-                    
+                        <button id="btnSignUp" type="submit" class="btn btn-light"  aria-label="Signs Up the user">SignUp</button>
                     </form>
 
                     <!--Displays Login Card-->
-                    <button id="btnLoginRef" type="button" class="btn btn-link">Go back to Login!</button>
+                    <button id="btnLoginRef" type="button" class="btn btn-link"  aria-label="Goes back to the Login Page">Go back to Login!</button>
                 </div>
             </div>
         </div>

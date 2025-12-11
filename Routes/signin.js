@@ -13,12 +13,12 @@ const db = new sqlite3.Database("./Animals.db");
 
 // Handle form POST and insert into database
 // Gathers user inputed data from index.html's signup form
-// Takes that data and runs a sql command to insert data into tables
 router.post("/signup", (req, res) => {
     const {txtSignUpEmail, txtSignUpPassword, txtFirstName, txtLastName,
             txtTelephone, txtAddress, txtCity, txtState, txtZip, txtRole,
             locationID} = req.body;
-
+    
+    //gets any rows with given email if email exists gives user an error
     db.get(`SELECT * FROM tblUsers WHERE email = ?`, [txtSignUpEmail], (err, row) => {
         if (err) {
             console.error(err.message);
@@ -31,7 +31,7 @@ router.post("/signup", (req, res) => {
         }
     });
 
-   
+   // Takes that data and runs a sql command to insert data into usertable
     db.run(`INSERT INTO tblUsers (email, password) VALUES (?, ?)`, [txtSignUpEmail, txtSignUpPassword], function (err) {
         if (err) {
             console.error(err.message);
@@ -43,6 +43,7 @@ router.post("/signup", (req, res) => {
 
     const newUserID = this.lastID; //userID from tblUsers for the link
 
+   // Takes that data and runs a sql command to insert data into employee table
     db.run(`INSERT INTO tblEmployee (fname, lname, role, phone, street, city, state, zipcode, locationID) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)`, [txtFirstName, txtLastName, txtRole, txtTelephone, txtAddress, txtCity, txtState, txtZip, locationID], function (err) {
         if (err) {
             console.error(err.message);

@@ -66,4 +66,4 @@ Mobile Responsiveness:
 
 All data is stored in a local SQLite database.
 
-Designed for ranch staff or enthusiasts to quickly manage animal data.
+Designed for ranch staff or enthusiasts to quickly manage and view animal data.

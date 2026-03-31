@@ -66,6 +66,4 @@ Mobile Responsiveness:
 
 All data is stored in a local SQLite database.
 
-User accounts are tracked per session for demo purposes; there is no authentication.
-
 Designed for ranch staff or enthusiasts to quickly manage animal data.
